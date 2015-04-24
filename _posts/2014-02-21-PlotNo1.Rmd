@@ -6,6 +6,11 @@ comments: true
 tags: [R, ggplot2]
 archive: true
 ---
+
+```{r}
+opts_chunk$set(dev = 'png')
+```
+
 Why do I write this post?
 -------------------------
 The motivation for this plot is the function: `graphics::smoothScatter`. A friend of mine uses the `graphics` package extensively and I am more a `ggplot2` user. So I wondered if I could imitate the main features of the plot.

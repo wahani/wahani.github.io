@@ -48,25 +48,11 @@ Functional Programming:
   - Class vs. type
   - Procedural language
 
-  
+
 Interessante Pakete:
   - cran-packages github.com/hadley
   - relaimpo
   - hier.part
-  
+
 Education:
   - statsTeachR
-  - http://web.neuestatistik.de/inhalte_web/content/medien.html
-
-Shiny-Apps
-  - http://web.neuestatistik.de/inhalte_web/content/files/obj_452/a47.html - hist vs. dichte
-  - http://web.neuestatistik.de/inhalte_web/content/files/obj_462/a49.html - t-Test mit variierenden Verteilungen
-  - http://web.neuestatistik.de/inhalte_web/content/files/obj_463/a5f.html - Gauss-Test mit variierenden Verteilungen
-  - http://web.neuestatistik.de/inhalte_web/content/files/obj_464/d79.html - Boxplot vs. Histogramm
-  - http://web.neuestatistik.de/inhalte_web/content/files/obj_467/a49.html - Levene-Test mit variierenden Verteilungen
-  - http://web.neuestatistik.de/inhalte_web/content/files/obj_468/b49.html - Verteilungen
-  - http://web.neuestatistik.de/inhalte_web/content/files/obj_469/c7f.html - Histogramm vs. Dichte
-  - http://web.neuestatistik.de/inhalte_web/content/files/obj_472/b59.html - Exakter p-Test (Münzwurf)
-  - http://web.neuestatistik.de/inhalte_web/content/files/obj_473/bbc.html - Approximation Normalverteilung
-  - http://web.neuestatistik.de/inhalte_web/content/files/obj_474/c2e.html - Approximativer p-Test (Münzwurf)
-  - http://web.neuestatistik.de/inhalte_web/content/files/obj_479/c2b.html - Gütefunktion

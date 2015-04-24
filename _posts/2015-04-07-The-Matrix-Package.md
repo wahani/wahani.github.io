@@ -47,7 +47,7 @@ system.time(naive.sol <- solve(t(mm) %*% mm) %*% t(mm) %*% y)
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.797   0.379   0.378
+##   0.757   0.370   0.354
 {% endhighlight %}
 
 
@@ -60,7 +60,7 @@ system.time(cpod.sol <- solve(crossprod(mm), crossprod(mm,y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.141   0.071   0.054
+##   0.158   0.042   0.050
 {% endhighlight %}
 
 
@@ -73,7 +73,7 @@ system.time(t(mm) %*% mm)
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.240   0.059   0.076
+##   0.221   0.071   0.075
 {% endhighlight %}
 
 ## Using Matrix
@@ -89,7 +89,7 @@ system.time(Mat.sol <- solve(crossprod(mm), crossprod(mm, y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.153   0.050   0.055
+##   0.162   0.027   0.050
 {% endhighlight %}
 
 There is also a concept of memoization implemented as allustrated as:
@@ -105,7 +105,7 @@ system.time(solve(xpx, xpy))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.031   0.005   0.010
+##   0.023   0.014   0.010
 {% endhighlight %}
 
 
@@ -157,7 +157,7 @@ system.time(solve(crossprod(mm), crossprod(mm, y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.147   0.106   0.073
+##   0.123   0.064   0.050
 {% endhighlight %}
 
 
@@ -200,7 +200,7 @@ system.time(solve(xpx, crossprod(mm, y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.025   0.025   0.013
+##   0.031   0.021   0.014
 {% endhighlight %}
 
 
@@ -213,7 +213,7 @@ system.time(solve(xpx, crossprod(mm, y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.004   0.012   0.004
+##   0.007   0.010   0.004
 {% endhighlight %}
 
 It's kind of the *manual* memoization of results you don't want to recompute.
@@ -245,7 +245,7 @@ system.time(sparse.sol <- solve(crossprod(mm), crossprod(mm, y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.003   0.000   0.004
+##   0.004   0.000   0.003
 {% endhighlight %}
 
 The methods seem to be polimorphic, so the return value can have different classes. `Matrix` for example will try to determine the class on it's own:

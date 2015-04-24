@@ -5,13 +5,14 @@ sass:
   sass_dir: assets/css/_sass
   style: :compressed
 
+highlighter: pygments
 markdown: kramdown
 kramdown:
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char
 
-url: http://127.0.0.1:4000
+url: http://wahani.github.io # http://127.0.0.1:4000
 permalink: /:year/:month/:title/
 owner:
     name: Sebastian Warnholz

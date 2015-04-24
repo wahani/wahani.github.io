@@ -26,13 +26,13 @@ summary(dat)
 
 
 {% highlight text %}
-##        x                  y           
-##  Min.   :-1.00471   Min.   :-1.47444  
-##  1st Qu.:-0.56425   1st Qu.:-0.60707  
-##  Median :-0.30005   Median :-0.08218  
-##  Mean   : 0.04475   Mean   :-0.04154  
-##  3rd Qu.: 0.52471   3rd Qu.: 0.55871  
-##  Max.   : 1.63835   Max.   : 1.88551
+##        x                 y            
+##  Min.   :-1.8917   Min.   :-3.531906  
+##  1st Qu.:-1.2936   1st Qu.:-0.713823  
+##  Median :-0.1446   Median : 0.230716  
+##  Mean   :-0.1834   Mean   : 0.005671  
+##  3rd Qu.: 0.2512   3rd Qu.: 0.925602  
+##  Max.   : 2.0683   Max.   : 2.174351
 {% endhighlight %}
 
 
@@ -49,17 +49,17 @@ summary(lm(y ~ x, dat))
 ## lm(formula = y ~ x, data = dat)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -1.53488 -0.48729 -0.07173  0.43517  1.98185 
+##     Min      1Q  Median      3Q     Max 
+## -3.3120 -0.8247  0.2410  0.8951  2.1756 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)
-## (Intercept) -0.04875    0.33529  -0.145    0.888
-## x            0.16105    0.38964   0.413    0.690
+## (Intercept)  0.05691    0.52719   0.108    0.917
+## x            0.27938    0.40654   0.687    0.511
 ## 
-## Residual standard error: 1.059 on 8 degrees of freedom
-## Multiple R-squared:  0.02091,	Adjusted R-squared:  -0.1015 
-## F-statistic: 0.1708 on 1 and 8 DF,  p-value: 0.6902
+## Residual standard error: 1.65 on 8 degrees of freedom
+## Multiple R-squared:  0.05575,	Adjusted R-squared:  -0.06229 
+## F-statistic: 0.4723 on 1 and 8 DF,  p-value: 0.5114
 {% endhighlight %}
 
 ### a method
@@ -151,12 +151,12 @@ filterMe("A", dat, "someFactor")
 
 
 {% highlight text %}
-##             x          y someFactor
-## 1 -0.42802131 -0.1752056          A
-## 3  0.06478188 -0.3150316          A
-## 5  0.67801505 -1.4744361          A
-## 7 -0.30455344  0.8122043          A
-## 9  1.41773292  0.7018845          A
+##            x          y someFactor
+## 1  1.8206980  0.6366948          A
+## 3  0.1639349 -0.7659652          A
+## 5 -0.2079978  2.1743512          A
+## 7 -1.6010818  0.3832582          A
+## 9  2.0683294  1.5703980          A
 {% endhighlight %}
 Then later in development I discover, that there are actually arguments which should not be of length 1. Typically I already use the function in more than one place and want to preserve its behaviour, so I do not want to change it.
 
@@ -202,12 +202,12 @@ filterMe("A", dat, "someFactor")
 
 
 {% highlight text %}
-##             x          y someFactor
-## 1 -0.42802131 -0.1752056          A
-## 3  0.06478188 -0.3150316          A
-## 5  0.67801505 -1.4744361          A
-## 7 -0.30455344  0.8122043          A
-## 9  1.41773292  0.7018845          A
+##            x          y someFactor
+## 1  1.8206980  0.6366948          A
+## 3  0.1639349 -0.7659652          A
+## 5 -0.2079978  2.1743512          A
+## 7 -1.6010818  0.3832582          A
+## 9  2.0683294  1.5703980          A
 {% endhighlight %}
 
 Now what I want is a function which filters a `data.frame`, for several variables with different levels. In this case I want the argument `varname` to be a named list, where the name is the variable and the value the level to filter for.

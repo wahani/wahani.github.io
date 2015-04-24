@@ -26,7 +26,7 @@ devtools::install_github("wahani/aoos", ref = "v0.1.0")
 ## Downloading github repo wahani/aoos@v0.1.0
 ## Installing aoos
 ## '/usr/lib/R/bin/R' --vanilla CMD INSTALL  \
-##   '/tmp/Rtmpm904PE/devtools446a1b3abb8d/wahani-aoos-94010bd'  \
+##   '/tmp/Rtmpvb72Fr/devtools2586795d8335/wahani-aoos-94010bd'  \
 ##   --library='/home/sebastian/R/x86_64-pc-linux-gnu-library/3.2'  \
 ##   --install-tests
 {% endhighlight %}
@@ -112,8 +112,8 @@ foo
 
 {% highlight text %}
 ##                      size               mtime
-## foo/someData.txt      292 2015-04-21 08:50:03
-## foo/someMoreData.txt  292 2015-04-21 08:50:03
+## foo/someData.txt      292 2015-04-24 08:58:20
+## foo/someMoreData.txt  292 2015-04-24 08:58:20
 {% endhighlight %}
 
 
@@ -140,7 +140,7 @@ foo
 
 {% highlight text %}
 ##                  size               mtime
-## foo/someData.txt  292 2015-04-21 08:50:03
+## foo/someData.txt  292 2015-04-24 08:58:20
 {% endhighlight %}
 
 

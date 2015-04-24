@@ -15,6 +15,11 @@ layout: default
     		</div>
     	</div>
         <div class="page-content">
+            <!-- Disclaimer -->
+            {% if page.archive != false %}
+              <p><i>This article is archived because of a reason. The content can be outdated or in draft form. You are welcome to read it anyway.</i></p>
+            {% endif %}
+
             {{ content }}
             <!-- Share & Comments -->
             {% include scripts/share.html %}

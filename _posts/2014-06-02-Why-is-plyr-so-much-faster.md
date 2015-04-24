@@ -26,8 +26,8 @@ gc()
 
 {% highlight text %}
 ##          used (Mb) gc trigger (Mb) max used (Mb)
-## Ncells 406877 21.8     750400 40.1   551122 29.5
-## Vcells 583298  4.5    1308461 10.0   784642  6.0
+## Ncells 406753 21.8     750400 40.1   549375 29.4
+## Vcells 583182  4.5    1308461 10.0   783860  6.0
 {% endhighlight %}
 
 
@@ -56,7 +56,7 @@ system.time(test1 <- ddply(dat[dat$type %in% typeSubset, ], .(id), summarise,
 
 {% highlight text %}
 ##    user  system elapsed 
-##  30.526   0.352  30.915
+##  29.508   0.256  29.758
 {% endhighlight %}
 
 
@@ -75,7 +75,7 @@ system.time({
 
 {% highlight text %}
 ##    user  system elapsed 
-##  26.217   0.560  26.775
+##  26.120   0.608  26.730
 {% endhighlight %}
 
 
@@ -94,5 +94,5 @@ system.time({
 
 {% highlight text %}
 ##    user  system elapsed 
-##  27.499   0.108  27.602
+##  26.956   0.136  27.094
 {% endhighlight %}

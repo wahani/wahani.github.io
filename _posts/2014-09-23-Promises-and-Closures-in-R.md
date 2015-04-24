@@ -96,7 +96,7 @@ f1
 
 {% highlight text %}
 ## function(x) x^p
-## <environment: 0x1aa6380>
+## <environment: 0x1a7e228>
 {% endhighlight %}
 
 This environment can even be accessed, to check what is going on inside.
