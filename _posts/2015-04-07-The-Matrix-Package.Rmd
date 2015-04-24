@@ -1,0 +1,99 @@
+---
+layout: post
+title: "The Matrix package"
+author: "Sebastian"
+bibliography:
+output: wahaniMiscs:::pdf_memo
+tags: [R, Matrix]
+---
+
+# Some considerations on perfomance:
+
+This is the example from
+
+```{r eval=FALSE}
+vignette("Comparisons", package = "Matrix")
+```
+
+## Base R
+```{r}
+library("Matrix")
+data(KNex, package = "Matrix")
+y <- KNex$y
+mm <- as(KNex$mm, "matrix")
+system.time(naive.sol <- solve(t(mm) %*% mm) %*% t(mm) %*% y)
+system.time(cpod.sol <- solve(crossprod(mm), crossprod(mm,y)))
+system.time(t(mm) %*% mm)
+```
+
+## Using Matrix
+
+This is equivalent to use `cpod.sol`:
+```{r}
+mm <- as(KNex$mm, "dgeMatrix")
+system.time(Mat.sol <- solve(crossprod(mm), crossprod(mm, y)))
+```
+
+There is also a concept of memoization implemented as allustrated as:
+
+```{r}
+xpx <- crossprod(mm)
+xpy <- crossprod(mm, y)
+system.time(solve(xpx, xpy))
+system.time(solve(xpx, xpy))
+```
+
+I don't know where the results are stored exactly. The document says with the original object, so either as attribute to `xpx` or `xpy`.
+
+```{r}
+names(xpx@factors)
+names(xpy@factors)
+```
+
+Okay, seems that only the first argument to `solve` is modified. But in nested calls this effect is not used:
+
+```{r}
+system.time(solve(crossprod(mm), crossprod(mm, y)))
+class(mm)
+class(xpx)
+```
+
+Maybe the reason for this is that `crossprod` will change the data, so storing results of the cholesky decomposition would not be meaningfull as it only makes sense for the cross product and not `mm`. Still this means that creating `xpy` is not necessary:
+
+```{r}
+xpx <- crossprod(mm)
+system.time(solve(xpx, crossprod(mm, y)))
+system.time(solve(xpx, crossprod(mm, y)))
+```
+
+It's kind of the *manual* memoization of results you don't want to recompute.
+
+## Taking advantage of sparse
+
+```{r}
+mm <- KNex$mm
+class(mm)
+```
+
+The matrix package privides a class for sparse matrices. The gain in speed is obvious, no tricky memoization needed as a lot of elements in `mm` are indeed zero.
+
+```{r}
+system.time(sparse.sol <- solve(crossprod(mm), crossprod(mm, y)))
+```
+
+The methods seem to be polimorphic, so the return value can have different classes. `Matrix` for example will try to determine the class on it's own:
+
+```{r}
+dat <- rnorm(1e6)
+dat[1:300000] <- 0
+m <- Matrix(dat, ncol = 1e3, nrow = 1e2)
+class(m)
+```
+
+```{r}
+oldM <- matrix(rnorm(1e6), ncol = 1e3, nrow = 1e2)
+oldMm <- crossprod(oldM)
+class(Matrix(oldMm))
+```
+
+So this is nice!

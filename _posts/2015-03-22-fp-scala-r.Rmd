@@ -1,0 +1,143 @@
+---
+layout: post
+title: "'Functional Programming with Scala' with R"
+author: "Sebastian"
+tags: [R, fp, oop, aoos]
+bibliography:
+output: wahaniMiscs:::pdf_memo
+math: true
+archive: true
+---
+
+# Higher Order Functions
+
+A function to represent:
+
+\\[ \sum_{i = a}^b f(i) \\]
+
+```{r}
+sum <- function(f, a, b) {
+  loop <- function(a, acc) {
+    if (a > b) acc
+    else loop(a + 1, f(a) + acc)
+  }
+  loop(a, 0)
+}
+
+sum(function(x) x, 1, 5) # identity
+sum(function(x) x^3, 1, 5) # cube
+sum(function(x) if(x == 0) 1 else x * Recall(x - 1), 1, 5) # factorial
+```
+
+# Currying
+
+Somehow get rid of the repetition in the 3 above examples! In each line the arguments a and b are passed, although they are the same. Not necessary!
+
+```{r}
+sum <- function(f) {
+  function(a, b) {
+    if (a > b) 0
+    else f(a) + Recall(a + 1, b)
+  }
+}
+
+sum(function(x) x)(1, 5)
+sum(function(x) x^3)(1, 5)
+sum(function(x) if(x == 0) 1 else x * Recall(x - 1))(1, 5)
+```
+
+I don't see where we get more expressive here. The example is not convincing for me. The *real* advantage to redefine `sum` is that you know can pass `sum(function(x) x)` as an object to another function and `a` and `b` are derived in another context (scope/environment).
+
+## Excercise
+
+- write a product function
+- write factorial in terms of product
+- abstract sum/product to some other higher order function
+
+```{r}
+product <- function(f) {
+  function(a, b) {
+    if (a > b) 1 # change to 1
+    else f(a) * Recall(a + 1, b) # change to *
+  }
+}
+
+identity <- function(x) x
+cube <- function(x) x^3
+
+product(identity)(1, 10) == factorial(10)
+fact <- functional::Curry(product(identity), a = 1)
+fact(5)
+product(cube)(1, 10) # == large number...
+```
+
+Abstract this `sum`/`product` to something more general:
+
+```{r}
+mapReduce <- function(f, combine, zero) {
+  function(a, b) {
+    if (a > b) zero
+    else combine(f(a), Recall(a + 1, b))
+  }
+}
+
+mapReduce(identity, `*`, 1)(1, 5)
+mapReduce(identity, `+`, 0)(1, 5)
+```
+
+Why is this `mapReduce` different from the `Reduce` function in R? Hm, in `mapReduce` we have a recursive component where I do not see a direct corespondence in the `Reduce` function which, in contrast, reduces a given vector of values.
+
+# Functions and Data
+
+```{r}
+devtools::install_github("wahani/aoos")
+library(aoos)
+Rational <- Class({
+  Class <- "Rational"
+  contains <- "Private"
+
+  numer <- "numeric"
+  denom <- "numeric"
+  .g <- "numeric"
+
+  .gcd <- function(a, b) if(b == 0) a else Recall(b, a %% b)
+
+  initialize <- function(numer, denom) {
+    .self$.g <- .gcd(numer, denom)
+    .self$numer <- numer / .g
+    .self$denom <- denom / .g
+
+  }
+
+  show <- function() {
+    cat(paste0(.self$numer, "/", .self$denom, "\n"))
+  }
+
+  add <- function(that) {
+    Rational(numer = numer * that$denom + that$numer * denom,
+             denom = denom * that$denom)
+  }
+
+  neg <- function() {
+    Rational(numer = -.self$numer,
+             denom = .self$denom)
+  }
+
+  sub <- function(that) {
+    add(that$neg())
+  }
+
+})
+
+rational <- Rational(2, 3)
+rational$add(rational)
+rational$neg()
+rational$sub(rational)
+
+x <- Rational(numer = 1, denom = 3)
+y <- Rational(numer = 5, denom = 7)
+z <- Rational(numer = 3, denom = 2)
+
+x$sub(y)$sub(z)
+
+```

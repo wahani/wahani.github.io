@@ -1,0 +1,133 @@
+---
+layout: post
+title: "6.1.1"
+author: "Sebastian"
+tags: [R, ggplot2, datendesign]
+bibliography:
+output: wahaniMiscs:::pdf_memo
+archive: true
+---
+
+```{r echo=FALSE}
+# library(knitr)
+# opts_knit$set(root.dir = "..")
+```
+
+# Barplot simple
+
+This is a reproduction of chapter 6.1.1 in [*Datendesign mit R*](http://www.datendesign-r.de/) with ggplot2.
+
+## Preparing data
+```{r}
+ipsos <- read.csv2("data/alle_daten/ipsos.csv")
+ipsos <- ipsos[order(ipsos$Wert),]
+ipsos$Land <- ordered(ipsos$Land, ipsos$Land)
+ipsos$textFamily <- ifelse(ipsos$Land %in% c("Deutschland","Brasilien"),
+                          "Lato Black", "Lato Light")
+ipsos$labels <- paste0(ipsos$Land, ifelse(ipsos$Wert < 10, "     ", "  "),
+                                   ipsos$Wert)
+rect <- data.frame(ymin = seq(0, 80, 20),
+           ymax = seq(20, 100, 20),
+           xmin = 0.5, xmax = 16.5,
+           colour = rep(c(grDevices::rgb(191,239,255,80,maxColorValue=255),
+                          grDevices::rgb(191,239,255,120,maxColorValue=255)),
+                        length.out = 5))
+```
+
+## The plot
+
+```{r message=FALSE}
+library(ggplot2)
+ggBar <- ggplot(ipsos) +
+  geom_bar(aes(x = Land, y = Wert), stat = "identity", fill = "grey") +
+  scale_y_continuous(breaks = seq(0, 100, 20), limits = c(0, 100), expand = c(0, 0)) +
+  scale_x_discrete(labels = ipsos$labels) +
+  geom_rect(data = rect,
+            mapping = aes(ymin = ymin, ymax = ymax,
+                          xmin = xmin, xmax = xmax),
+            fill = rect$colour) +
+  geom_bar(aes(x = Land, y = ifelse(Land %in% c("Brasilien", "Deutschland"), Wert, NA)),
+           stat = "identity", fill = rgb(255,0,210,maxColorValue=255)) +
+  theme_minimal() +
+  labs(y = NULL,
+       x = NULL,
+       title = NULL) +
+  geom_hline(aes(yintercept = 45), colour = "skyblue3") +
+  coord_flip() +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text.y = element_text(
+          family = ipsos$textFamily),
+        axis.title.x = element_text(
+          hjust = 1,
+          vjust = 0,
+          size = 9),
+        plot.title = element_text(
+          family = "Lato Black",
+          hjust = -0.7,
+          vjust = 1),
+        text = element_text(family = "Lato Light"))
+
+ggBar
+```
+
+## Annotations and layout
+
+Not really happy with this one. Defining the places on the viewport where I want to push elements:
+
+```{r}
+library("grid")
+
+main <- viewport(x = 0.05, y = 0.05, w = 0.9, h = 0.8,
+                 just = c("left", "bottom"), name = "main")
+title <- viewport(x = 0, y = 0.9, w = 0.6, h = 0.1,
+                  just = c("left", "bottom"))
+subtitle <- viewport(x = 0, y = 0.85, w = 0.4, h = 0.05,
+                     just = c("left", "bottom"))
+footnote <- viewport(x = 0.55, y = 0, w = 0.4, h = 0.05,
+                     just = c("left", "bottom"))
+annotation1 <- viewport(x = 0.7, y = 0.8, w = 0.225, h = 0.05,
+                        just = c("left", "bottom"))
+annotation2 <- viewport(x = 0.4, y = 0.8, w = 0.13, h = 0.05,
+                        just = c("left", "bottom"))
+```
+
+Now the elements and optionally to store the final graphic in a pdf:
+
+```{r fig.width = 9, height = 6.5}
+# pdf_datei<-"balkendiagramme_einfach.pdf"
+# cairo_pdf(bg = "grey98", pdf_datei, width=9, height=6.5)
+grid.newpage()
+print(ggBar, vp = main)
+pushViewport(title)
+grid.text("'Ich glaube fest an Gott oder ein höheres Wesen'",
+          gp = gpar(fontfamily = "Lato Black", fontsize = 14),
+          just = "left", x = 0.05)
+upViewport()
+pushViewport(subtitle)
+grid.text("...sagten 2010 in:",
+          gp = gpar(fontfamily = "Lato Light", fontsize = 12),
+          just = "left",
+          x = 0.05)
+upViewport()
+pushViewport(footnote)
+grid.text("Quelle: www.ipsos-na.com, Design: Stefan Fichtel, ixtract",
+          gp = gpar(fontfamily = "Lato Light", fontsize = 9),
+          just = "right",
+          x = 0.95)
+upViewport()
+pushViewport(annotation1)
+grid.text("Alle Angaben in Prozent",
+          gp = gpar(fontfamily = "Lato Light", fontsize = 9),
+          just = "right",
+          x = 1, y = 0.55)
+upViewport()
+pushViewport(annotation2)
+grid.text("Durchschnitt: 45",
+          gp = gpar(fontfamily = "Lato Light", fontsize = 9),
+          just = "right",
+          x = 0.95, y = 0.55)
+upViewport()
+# dev.off()
+```

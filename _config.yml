@@ -1,0 +1,28 @@
+name: notes from seb!
+description: stats / R
+
+sass:
+  sass_dir: assets/css/_sass
+  style: :compressed
+
+markdown: kramdown
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+
+url: http://127.0.0.1:4000
+permalink: /:year/:month/:title/
+owner:
+    name: Sebastian Warnholz
+    twitter: swarnholz
+    github: wahani
+    disqus_shortname: wahanigithubio
+    linkedin: http://de.linkedin.com/pub/sebastian-warnholz/62/11b/370
+
+ga_id: UA-48337246-1
+ga_username: wahani
+
+timezone: Europe/Berlin
+
+exclude: [_posts/Ideen, _posts/*.Rmd, build.R, Makefile]
