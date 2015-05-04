@@ -56,3 +56,9 @@ Interessante Pakete:
 
 Education:
   - statsTeachR
+
+Pattern:
+  - See: http://www.infoq.com/presentations/Clojure-Design-Patterns
+  - wrapper pattern
+  - pipeline pattern
+  - split-apply-combine
