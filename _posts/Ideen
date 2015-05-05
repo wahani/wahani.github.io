@@ -62,3 +62,9 @@ Pattern:
   - wrapper pattern
   - pipeline pattern
   - split-apply-combine
+  - Railway Oriented Programming
+      - Single Track Functions
+      - Dead-end functions
+      - Functions that throw exceptions
+      - Supervisory functions
+  - Designing for errors
