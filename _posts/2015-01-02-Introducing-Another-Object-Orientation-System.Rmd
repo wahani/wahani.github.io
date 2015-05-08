@@ -2,11 +2,11 @@
 layout: post
 published: true
 title: Introducing Another Object Orientation System
-description: "Introduction to the R-package aoos, another object orientation system in R."
+description: "Introduction to the R-package aoos, another object orientation system in R - v0.1.0."
 comments: true
 math: true
 tags: [R, oop, aoos]
-archive: false
+archive: true
 ---
 
 R has more than enough systems for object orientation and here is yet another one. *S3* and *S4* are the built in systems. [R.oo](http://cran.r-project.org/web/packages/R.oo/index.html) has been developed since 2001; [proto](http://cran.r-project.org/web/packages/proto/index.html) since 2005; and [R6](http://cran.r-project.org/web/packages/R6/index.html) is the newest and published to CRAN in 2014.

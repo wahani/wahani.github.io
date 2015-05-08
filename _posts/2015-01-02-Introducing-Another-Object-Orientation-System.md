@@ -2,11 +2,11 @@
 layout: post
 published: true
 title: Introducing Another Object Orientation System
-description: "Introduction to the R-package aoos, another object orientation system in R."
+description: "Introduction to the R-package aoos, another object orientation system in R - v0.1.0."
 comments: true
 math: true
 tags: [R, oop, aoos]
-archive: false
+archive: true
 ---
 
 R has more than enough systems for object orientation and here is yet another one. *S3* and *S4* are the built in systems. [R.oo](http://cran.r-project.org/web/packages/R.oo/index.html) has been developed since 2001; [proto](http://cran.r-project.org/web/packages/proto/index.html) since 2005; and [R6](http://cran.r-project.org/web/packages/R6/index.html) is the newest and published to CRAN in 2014.
@@ -26,7 +26,7 @@ devtools::install_github("wahani/aoos", ref = "v0.1.0")
 ## Downloading github repo wahani/aoos@v0.1.0
 ## Installing aoos
 ## '/usr/lib/R/bin/R' --vanilla CMD INSTALL  \
-##   '/tmp/Rtmpvb72Fr/devtools2586795d8335/wahani-aoos-94010bd'  \
+##   '/tmp/RtmpybdSdH/devtools109a4235d1e2/wahani-aoos-94010bd'  \
 ##   --library='/home/sebastian/R/x86_64-pc-linux-gnu-library/3.2'  \
 ##   --install-tests
 {% endhighlight %}
@@ -112,8 +112,8 @@ foo
 
 {% highlight text %}
 ##                      size               mtime
-## foo/someData.txt      292 2015-04-24 08:58:20
-## foo/someMoreData.txt  292 2015-04-24 08:58:20
+## foo/someData.txt      292 2015-05-08 07:16:38
+## foo/someMoreData.txt  292 2015-05-08 07:16:38
 {% endhighlight %}
 
 
@@ -140,7 +140,7 @@ foo
 
 {% highlight text %}
 ##                  size               mtime
-## foo/someData.txt  292 2015-04-24 08:58:20
+## foo/someData.txt  292 2015-05-08 07:16:38
 {% endhighlight %}
 
 
