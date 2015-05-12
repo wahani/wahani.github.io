@@ -9,7 +9,7 @@ tags: [R, fp, closures, lazy evaluation]
 archive: false
 ---
 
-At the moment I try to improve my knowledge about functional programming in R. Luckily there are some explanations on the topic in the web ([adv-r](http://adv-r.had.co.nz/Functional-programming.html) and [Cartesian Faith](http://cartesianfaith.com/2014/04/16/modeling-data-with-functional-programming-in-r-chapter-1/)). Beginning to (re)discover the usefulness of closures, I remember some (at first sight) very strange behaviour. Actually it is consistent within the evaluation rules of [*R*](http://cran.r-project.org/), but until I felt to be on the same level of consistency it took a while. Here follow the steps to one of my light-bulb moments.
+At the moment I try to improve my knowledge about functional programming in R. Luckily there are some explanations on the topic in the web ([adv-r](http://adv-r.had.co.nz/Functional-programming.html) and [Cartesian Faith](http://cartesianfaith.com/2014/04/16/modeling-data-with-functional-programming-in-r-chapter-1/)). Beginning to (re)discover the usefulness of closures, I remember some (at first sight) very strange behaviour. Actually it is consistent within the scoping rules of [*R*](http://cran.r-project.org/), but until I felt to be on the same level of consistency it took a while.
 
 ## What is a promise?
 Every argument you pass to a function is a promise until the moment *R* evaluates it. Consider a function `g` with arguments `x` and `y`; let's leave out one argument in the function call:
@@ -96,14 +96,14 @@ f1
 
 {% highlight text %}
 ## function(x) x^p
-## <environment: 0x1a7e228>
+## <environment: 0x000000000c090b38>
 {% endhighlight %}
 
 This environment can even be accessed, to check what is going on inside.
 
 
 {% highlight r %}
-eval(expression(ls()), envir=environment(f1))
+ls(environment(f1))
 {% endhighlight %}
 
 
@@ -115,7 +115,7 @@ eval(expression(ls()), envir=environment(f1))
 
 
 {% highlight r %}
-eval(expression(p), envir=environment(f1))
+get("p", envir = environment(f1))
 {% endhighlight %}
 
 
@@ -128,12 +128,16 @@ So in the enclosing environment of `f1` lives a variable `p` with value 1. Whene
 
 ## Why are those two related?
 
-When I read about the scoping rules in *R* I never really understood the implications of the word *lazy*. It needed a couple of hours of utter confusion and experiments with closures that I got it. Consider the case where I want to construct an arbitrary number of functions like in the above example. Copy-pasting `fClosure` will quickly reach limits and is more frustrating than coding. So we can generalize the above code.
+When I read about the scoping rules in *R* I never really understood the implications of the word *lazy*. It needed a couple of hours of utter confusion and experiments with closures that I got it. Consider the case where I want to construct an arbitrary number of functions like in the above example. Copy-pasting `fClosure` will quickly reach limits and is more frustrating than coding. 
 
 
 {% highlight r %}
 # Creating f1-f5 and store them in a list
-funList <- lapply(1:5, fClosure)
+# This will actually work using lapply in the most recent R version (3.2) 
+# I enforce it by using a for-loop instead of lapply...
+# funList <- lapply(1:5, fClosure) 
+funList <- list()
+for (i in 1:5) funList[[i]] <- fClosure(i)
 # Call f1-f5 with the argument x = 1:10
 resultList <- lapply(funList, do.call, args = list(x = 1:10))
 # Cbind the results
@@ -143,17 +147,17 @@ do.call(cbind, resultList)
 
 
 {% highlight text %}
-##       [,1] [,2] [,3]  [,4]   [,5]
-##  [1,]    1    1    1     1      1
-##  [2,]    2    4    8    16     32
-##  [3,]    3    9   27    81    243
-##  [4,]    4   16   64   256   1024
-##  [5,]    5   25  125   625   3125
-##  [6,]    6   36  216  1296   7776
-##  [7,]    7   49  343  2401  16807
-##  [8,]    8   64  512  4096  32768
-##  [9,]    9   81  729  6561  59049
-## [10,]   10  100 1000 10000 100000
+##         [,1]   [,2]   [,3]   [,4]   [,5]
+##  [1,]      1      1      1      1      1
+##  [2,]     32     32     32     32     32
+##  [3,]    243    243    243    243    243
+##  [4,]   1024   1024   1024   1024   1024
+##  [5,]   3125   3125   3125   3125   3125
+##  [6,]   7776   7776   7776   7776   7776
+##  [7,]  16807  16807  16807  16807  16807
+##  [8,]  32768  32768  32768  32768  32768
+##  [9,]  59049  59049  59049  59049  59049
+## [10,] 100000 100000 100000 100000 100000
 {% endhighlight %}
 
 Ups, what happened? The resulting matrix looks like every column was created using the same function! Just to be clear, the above code works just fine. It does exactly as intended. In this case I was tricked by the promises in the enclosing environments, and that in those enclosing environments there live variables `p` with values 1 to 5. This is not so. Remember, the arguments of a function are evaluated when they are first needed. Until then they are promises. The concept of a promise was surprising because it's one of the very few objects which has reference semantics in *base-R*. So a promise is just a pointer to a variable name in an environment (the environment from which the function is called) -- they are not pointing to values! If the value of the variable pointed to changes before the promise is evaluated inside the function, the behaviour of the function will change too. This leads to the question: what is the value of `p` inside this list of functions?
@@ -166,10 +170,10 @@ sapply(funList, function(fun) get("p", envir = environment(fun)))
 
 
 {% highlight text %}
-## [1] 1 2 3 4 5
+## [1] 5 5 5 5 5
 {% endhighlight %}
 
-Okay, fine, so in the `lapply` where I created the functions `f1` to `f5`, I did pass the numbers 1 to 5 to the closure, however, they do not get evaluated but point to the iterator inside `lapply` which is 5 at the moment the promises are evaluated. How do we fix this? Evaluate `p` in the enclosing environment at the moment of assignment. Actually we could just write `p` in the functions body (not the function which is returned, it needs to be evaluated in the enclosing environment), but that may be considered bad style because in two weeks time you will see it as a redundant and useless line of code. Actually there is a function for this. `force` forces the evaluation of arguments in the enclosing environment. This means that the variable `p` will be bound to a value at the moment the closure is called.
+Okay, fine, so in the loop where I created the functions `f1` to `f5`, I did pass the numbers 1 to 5 to the closure, however, they do not get evaluated but point to the iterator which is 5 at the moment the promises are evaluated. How do we fix this? Evaluate `p` in the enclosing environment at the moment of assignment. Actually we could just write `p` in the functions body (not the function which is returned, it needs to be evaluated in the enclosing environment), but that may be considered bad style because in two weeks time you will see it as a redundant and useless line of code. Actually there is a function for this. `force` forces the evaluation of arguments in the enclosing environment. This means that the variable `p` will be bound to a value at the moment the closure is called.
 
 
 {% highlight r %}
@@ -177,10 +181,10 @@ Okay, fine, so in the `lapply` where I created the functions `f1` to `f5`, I did
 fClosure <- function(p) {
   force(p)
   function(x) x^p
-  }
+}
 
 # And again, with a new definition of fClosure:
-funList <- lapply(1:5, fClosure)
+for(i in 1:5) funList[[i]] <- fClosure(i)
 resultList <- lapply(funList, do.call, args = list(x = 1:10))
 do.call(cbind, resultList)
 {% endhighlight %}
