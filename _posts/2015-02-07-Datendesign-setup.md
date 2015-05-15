@@ -13,11 +13,11 @@ archive: true
 ## Data for graphics
 
 {% highlight r %}
-dir.create("_rmd/data")
-writeLines("*", "_rmd/data/.gitignore")
+dir.create("data")
+writeLines("*", "data/.gitignore")
 download.file("http://www.datendesign-r.de/alle_daten.zip",
-              "_rmd/data/alle_daten.zip")
-unzip("_rmd/data/alle_daten.zip", exdir = "_rmd/data")
+              "data/alle_daten.zip")
+unzip("data/alle_daten.zip", exdir = "data")
 {% endhighlight %}
 
 ## Code for all examples
@@ -25,6 +25,6 @@ unzip("_rmd/data/alle_daten.zip", exdir = "_rmd/data")
 
 {% highlight r %}
 download.file("http://www.datendesign-r.de/beispielcode.zip",
-              "_rmd/data/beispielcode.zip")
-unzip("_rmd/data/beispielcode.zip", exdir = "_rmd/data")
+              "data/beispielcode.zip")
+unzip("data/beispielcode.zip", exdir = "data")
 {% endhighlight %}

@@ -17,75 +17,13 @@ This is a reproduction of chapter 6.1.1 in [*Datendesign mit R*](http://www.date
 ## Preparing data
 
 {% highlight r %}
-ipsos <- read.csv2("data/alle_daten/ipsos.csv")
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Warning in file(file, "rt"): kann Datei 'data/alle_daten/ipsos.csv' nicht
-## öffnen: Datei oder Verzeichnis nicht gefunden
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in file(file, "rt"): kann Verbindung nicht öffnen
-{% endhighlight %}
-
-
-
-{% highlight r %}
+ipsos <- openxlsx::read.xlsx("../data/alle_daten/ipsos.xlsx")
 ipsos <- ipsos[order(ipsos$Wert),]
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): Objekt 'ipsos' nicht gefunden
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ipsos$Land <- ordered(ipsos$Land, ipsos$Land)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in factor(x, ..., ordered = TRUE): Objekt 'ipsos' nicht gefunden
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ipsos$textFamily <- ifelse(ipsos$Land %in% c("Deutschland","Brasilien"),
                           "Lato Black", "Lato Light")
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in match(x, table, nomatch = 0L): Objekt 'ipsos' nicht gefunden
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ipsos$labels <- paste0(ipsos$Land, ifelse(ipsos$Wert < 10, "     ", "  "),
                                    ipsos$Wert)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in paste0(ipsos$Land, ifelse(ipsos$Wert < 10, "     ", "  "), ipsos$Wert): Objekt 'ipsos' nicht gefunden
-{% endhighlight %}
-
-
-
-{% highlight r %}
 rect <- data.frame(ymin = seq(0, 80, 20),
            ymax = seq(20, 100, 20),
            xmin = 0.5, xmax = 16.5,
@@ -120,34 +58,19 @@ ggBar <- ggplot(ipsos) +
         axis.ticks = element_blank(),
         axis.text.y = element_text(
           family = ipsos$textFamily),
-        axis.title.x = element_text(
-          hjust = 1,
-          vjust = 0,
-          size = 9),
-        plot.title = element_text(
-          family = "Lato Black",
-          hjust = -0.7,
-          vjust = 1),
         text = element_text(family = "Lato Light"))
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in ggplot(ipsos): Objekt 'ipsos' nicht gefunden
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ggBar
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): Objekt 'ggBar' nicht gefunden
+## Warning in loop_apply(n, do.ply): Removed 14 rows containing missing
+## values (position_stack).
 {% endhighlight %}
+
+<img src="/assets/images/2015-02-07-Datendesign-Barplot-simple/unnamed-chunk-3-1.png" title="center" alt="center" width="100%" />
 
 ## Annotations and layout
 
@@ -184,7 +107,8 @@ print(ggBar, vp = main)
 
 
 {% highlight text %}
-## Error in print(ggBar, vp = main): Objekt 'ggBar' nicht gefunden
+## Warning in loop_apply(n, do.ply): Removed 14 rows containing missing
+## values (position_stack).
 {% endhighlight %}
 
 

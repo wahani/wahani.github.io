@@ -19,7 +19,7 @@ This is a reproduction of chapter 6.1.1 in [*Datendesign mit R*](http://www.date
 
 ## Preparing data
 ```{r}
-ipsos <- read.csv2("data/alle_daten/ipsos.csv")
+ipsos <- openxlsx::read.xlsx("../data/alle_daten/ipsos.xlsx")
 ipsos <- ipsos[order(ipsos$Wert),]
 ipsos$Land <- ordered(ipsos$Land, ipsos$Land)
 ipsos$textFamily <- ifelse(ipsos$Land %in% c("Deutschland","Brasilien"),
@@ -59,14 +59,6 @@ ggBar <- ggplot(ipsos) +
         axis.ticks = element_blank(),
         axis.text.y = element_text(
           family = ipsos$textFamily),
-        axis.title.x = element_text(
-          hjust = 1,
-          vjust = 0,
-          size = 9),
-        plot.title = element_text(
-          family = "Lato Black",
-          hjust = -0.7,
-          vjust = 1),
         text = element_text(family = "Lato Light"))
 
 ggBar
