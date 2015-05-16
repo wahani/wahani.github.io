@@ -11,3 +11,4 @@ output: wahaniMiscs:::pdf_memo
 
 - [openintro.org](OpenIntro)
 - [http://statsteachr.org/](statsTeachR)
+- [ggplot2 tutorial](https://github.com/jennybc/ggplot2-tutorial)
