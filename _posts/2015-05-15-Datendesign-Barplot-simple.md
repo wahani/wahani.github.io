@@ -3,6 +3,7 @@ layout: post
 title: "A not so simple bar plot example using ggplot2"
 author: "Sebastian"
 tags: [R, ggplot2, datendesign]
+description: "A barplot example using ggplot2 from the book 'Datendesign mit R'."
 bibliography:
 output: wahaniMiscs:::pdf_memo
 archive: false
@@ -90,8 +91,7 @@ ggBar
 
 
 {% highlight text %}
-## Warning in loop_apply(n, do.ply): Removed 14 rows containing missing
-## values (position_stack).
+## Warning: Removed 14 rows containing missing values (position_stack).
 {% endhighlight %}
 
 <img src="/assets/images/2015-05-15-Datendesign-Barplot-simple/unnamed-chunk-5-1.png" title="center" alt="center" width="100%" />
@@ -140,8 +140,7 @@ print(ggBar, vp = main)
 
 
 {% highlight text %}
-## Warning in loop_apply(n, do.ply): Removed 14 rows containing missing
-## values (position_stack).
+## Warning: Removed 14 rows containing missing values (position_stack).
 {% endhighlight %}
 
 

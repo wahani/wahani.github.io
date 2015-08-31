@@ -6,12 +6,21 @@
         <title>{{ site.name }} {% if page.title %} &mdash; {{ page.title }} {% endif %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="alternate" type="application/atom+xml" title="{{site.name}}" href="{{site.url}}/feed.xml">
+
         <!-- Loop and attach page tags from page meta section -->
         {% if page.tags %}
-        <meta name="keywords" content="{{ page.tags }}">
+        <meta name="keywords" content="{{ page.tags | join: ' '}}">
         {% else %}
         <meta name="keywords" content="">
         {% endif %}
+
+	<!-- Description of page/post -->
+	{% if page.description %}
+        <meta name="description" content="{{ page.description }}">
+        {% else %}
+        <meta name="description" content="">
+        {% endif %}
+
         <link rel="icon" type="image/png" href="{{ "/favicon.png" | prepend: site.url }}">
         <!-- Custom CSS -->
         <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.url }}">
