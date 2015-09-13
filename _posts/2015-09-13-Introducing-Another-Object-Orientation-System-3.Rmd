@@ -18,4 +18,4 @@ install.packages("aoos")
 vignette("Introduction", "aoos")
 ```
 
-<iframe width='100%' height='950' src="https://cran.rstudio.com/web/packages/aoos/vignettes/Introduction.html" frameborder="0" allowfullscreen></iframe>
+<iframe width='100%' height='950' src="http://wahani.github.io/aoos/vignettes/Introduction.html" frameborder="0" allowfullscreen></iframe>

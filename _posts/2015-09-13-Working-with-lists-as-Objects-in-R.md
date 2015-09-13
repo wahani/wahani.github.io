@@ -19,4 +19,4 @@ install.packages("aoos")
 vignette("retListClasses", "aoos")
 {% endhighlight %}
 
-<iframe width='100%' height='3000' src="https://cran.rstudio.com/web/packages/aoos/vignettes/retListClasses.html" frameborder="0" allowfullscreen></iframe>
+<iframe width='100%' height='3000' src="http://wahani.github.io/aoos/vignettes/retListClasses.html" frameborder="0" allowfullscreen></iframe>
