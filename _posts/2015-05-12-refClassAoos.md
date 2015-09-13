@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "On reference classes in R"
-tags: [R, oop, aoos]
+tags: [R, oop, aoos, object orientation]
 archive: false
 ---
 
@@ -174,6 +174,12 @@ Rational <- Class({
 })
 {% endhighlight %}
 
+
+
+{% highlight text %}
+## Error in eval(expr, envir, enclos): could not find function "Class"
+{% endhighlight %}
+
 `Class` is a wrapper around `setRefClass` and captures whatever you write inside the curly braces. So this is really just a different representation of the above example but at least for me easier to read. The test cases for confirmation:
 
 
@@ -266,7 +272,17 @@ Rational <- Class({
   }
 
 })
+{% endhighlight %}
 
+
+
+{% highlight text %}
+## Error in eval(expr, envir, enclos): could not find function "Class"
+{% endhighlight %}
+
+
+
+{% highlight r %}
 rational <- Rational(2, 3)
 rational$.gcd
 {% endhighlight %}
@@ -274,7 +290,7 @@ rational$.gcd
 
 
 {% highlight text %}
-## Error in rational$.gcd: Restricted access!
+## Error in envRefInferField(x, what, getClass(class(x)), selfEnv): '.gcd' is not a valid field or method name for reference class "Rational"
 {% endhighlight %}
 
 
@@ -684,7 +700,7 @@ rational + rational
 
 
 {% highlight text %}
-## 4/3
+## Error in get(pair[2], envir = as.environment(e1)): object '.+' not found
 {% endhighlight %}
 
 
@@ -696,7 +712,7 @@ rational - rational
 
 
 {% highlight text %}
-## 0/1
+## Error in get(pair[2], envir = as.environment(e1)): object '.-' not found
 {% endhighlight %}
 
 Returning a list can be superior because it comes with an easy and straight forward way for inheritance. Extensions can be added to the list returned and method replacements can be implemented, well, by replacing elements in the returned list. However, it reminds me of prototype based object orientation and probably can be implemented differently.

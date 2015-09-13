@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "On reference classes in R"
-tags: [R, oop, aoos]
+tags: [R, oop, aoos, object orientation]
 archive: false
 ---
 

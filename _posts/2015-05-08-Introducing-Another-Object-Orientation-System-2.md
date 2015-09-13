@@ -1,12 +1,11 @@
 ---
 layout: post
-published: true
 title: Introducing Another Object Orientation System
 description: "Introduction to the R-package aoos, another object orientation system in R - v0.2.0."
-comments: true
+comments: false
 math: true
-tags: [R, oop, aoos]
-archive: false
+tags: [R, oop, aoos, object orientation]
+archive: true
 ---
 
 R has more than enough systems for object orientation and here is yet another one. *S3* and *S4* are the built in systems. [R.oo](http://cran.r-project.org/web/packages/R.oo/index.html) has been developed since 2001; [proto](http://cran.r-project.org/web/packages/proto/index.html) since 2005; and [R6](http://cran.r-project.org/web/packages/R6/index.html) is the newest and published to CRAN in 2014.
@@ -42,7 +41,7 @@ Directory <- defineClass("Directory", contains = c("Show", "Binary"), {
         dir.create(name)
         }
        self$dirName <- name
-    } 
+    }
   }
 
   remove <- function(...) {
@@ -50,19 +49,19 @@ Directory <- defineClass("Directory", contains = c("Show", "Binary"), {
     if(length(filesInDir)) self - filesInDir else message("No files in directory!")
     invisible(self)
   }
-  
+
   show <- function(object) {
     print(file.info(dir(dirName, full.names = TRUE))[c("size", "mtime")])
     }
-  
+
   "./" <- function(e2) paste(dirName, "/", e2, sep = "")
-  
+
   ".-" <- function(e2) file.remove(self/e2)
-  
+
 })
 {% endhighlight %}
 
-The class *Directory* is basically a S4 class and inherits from *environment*. You can only access *public* member; and the return value of `defineClass` is the constructor function, so you can use `Directory()` to create an instance of *Directory*. Arguments to the constructor are passed on to the `init` method if you have defined one. The class inherits from *Show* which means that the member function `show` is used as `show-method`, and *Binary* allows to define binary operators. On initialization a directory is created if it doesn't exist. We start with a directory named 'foo'. 
+The class *Directory* is basically a S4 class and inherits from *environment*. You can only access *public* member; and the return value of `defineClass` is the constructor function, so you can use `Directory()` to create an instance of *Directory*. Arguments to the constructor are passed on to the `init` method if you have defined one. The class inherits from *Show* which means that the member function `show` is used as `show-method`, and *Binary* allows to define binary operators. On initialization a directory is created if it doesn't exist. We start with a directory named 'foo'.
 
 
 {% highlight r %}
@@ -90,8 +89,8 @@ foo
 
 {% highlight text %}
 ##                      size               mtime
-## foo/someData.txt      292 2015-05-08 07:45:52
-## foo/someMoreData.txt  292 2015-05-08 07:45:52
+## foo/someData.txt      292 2015-09-13 19:01:03
+## foo/someMoreData.txt  292 2015-09-13 19:01:03
 {% endhighlight %}
 
 
@@ -118,7 +117,7 @@ foo
 
 {% highlight text %}
 ##                  size               mtime
-## foo/someData.txt  292 2015-05-08 07:45:52
+## foo/someData.txt  292 2015-09-13 19:01:03
 {% endhighlight %}
 
 

@@ -3,9 +3,9 @@ layout: post
 published: true
 title: Promises and Closures in R
 description: "An explanation/exploration of functions returning functions (closures) in combination with the concept of lazy evaluation and promises in R."
-comments: false
+comments: true
 math: true
-tags: [R, fp, closures, lazy evaluation]
+tags: [R, fp, closures, lazy evaluation, functional programming]
 archive: false
 ---
 
@@ -39,7 +39,7 @@ g(1, nonExistentObject)
 ## [1] 1
 {% endhighlight %}
 
-Have a look at the figure 'Environment Path 1' ([this is the inspiration](http://cran.r-project.org/doc/contrib/Fox-Companion/appendix-scope.pdf)). Your workspace is also called the Global Environment and you can access it explicitly using the internal variable `.GlobalEnv`. There is one variable in my workspace, the function `g(x, y)`. When `g` is called a new environment is created in which it's body will be evaluated. This is denoted by the solid line. In this new environment of `g` their exist two variables, `x` and `y`. As long as those variables are not needed, no values are bound to those names only a promise that a value can be found at the time of evaluation. Since `x` is evaluated, the value `1` is bound to `x` in the environment of the function `g`. `y`, however, is not evaluated, so the promised value of `y` is never searched for and we can promise anything.
+Have a look at the figure 'Environment Path 1' ([this is the inspiration](http://cran.r-project.org/doc/contrib/Fox-Companion/appendix-scope.pdf)). Your workspace is also called the Global Environment and you can access it explicitly using the internal variable `.GlobalEnv`. There is one variable in my workspace, the function `g(x, y)`. When `g` is called a new environment is created in which it's body will be evaluated. This is denoted by the solid line. In this new environment of `g` there exist two variables, `x` and `y`. As long as those variables are not needed, no values are bound to those names only a promise that a value can be found at the time of evaluation. Since `x` is evaluated, the value `1` is bound to `x` in the environment of the function `g`. `y`, however, is not evaluated, so the promised value of `y` is never searched for and we can promise anything.
 
 <figure style = "text-align: center">
   <a href=""><img src="/assets/images/2014-05-18-A-Closure-and-a-Promise/EnvPath1.png"></a>
@@ -96,7 +96,7 @@ f1
 
 {% highlight text %}
 ## function(x) x^p
-## <environment: 0x000000000c090b38>
+## <environment: 0x3830598>
 {% endhighlight %}
 
 This environment can even be accessed, to check what is going on inside.
@@ -128,14 +128,14 @@ So in the enclosing environment of `f1` lives a variable `p` with value 1. Whene
 
 ## Why are those two related?
 
-When I read about the scoping rules in *R* I never really understood the implications of the word *lazy*. It needed a couple of hours of utter confusion and experiments with closures that I got it. Consider the case where I want to construct an arbitrary number of functions like in the above example. Copy-pasting `fClosure` will quickly reach limits and is more frustrating than coding. 
+When I read about the scoping rules in *R* I never really understood the implications of the word *lazy*. It needed a couple of hours of utter confusion and experiments with closures that I got it. Consider the case where I want to construct an arbitrary number of functions like in the above example. Copy-pasting `fClosure` will quickly reach limits and is more frustrating than coding.
 
 
 {% highlight r %}
 # Creating f1-f5 and store them in a list
-# This will actually work using lapply in the most recent R version (3.2) 
+# This will actually work using lapply in the most recent R version (3.2)
 # I enforce it by using a for-loop instead of lapply...
-# funList <- lapply(1:5, fClosure) 
+# funList <- lapply(1:5, fClosure)
 funList <- list()
 for (i in 1:5) funList[[i]] <- fClosure(i)
 # Call f1-f5 with the argument x = 1:10
@@ -160,7 +160,7 @@ do.call(cbind, resultList)
 ## [10,] 100000 100000 100000 100000 100000
 {% endhighlight %}
 
-Ups, what happened? The resulting matrix looks like every column was created using the same function! Just to be clear, the above code works just fine. It does exactly as intended. In this case I was tricked by the promises in the enclosing environments, and that in those enclosing environments there live variables `p` with values 1 to 5. This is not so. Remember, the arguments of a function are evaluated when they are first needed. Until then they are promises. The concept of a promise was surprising because it's one of the very few objects which has reference semantics in *base-R*. So a promise is just a pointer to a variable name in an environment (the environment from which the function is called) -- they are not pointing to values! If the value of the variable pointed to changes before the promise is evaluated inside the function, the behaviour of the function will change too. This leads to the question: what is the value of `p` inside this list of functions?
+Ups, what happened? The resulting matrix looks like every column was created using the same function! Just to be clear, the above code works just fine. It does exactly as intended. In this case I was tricked by the promises in the enclosing environments, and that in those enclosing environments there live variables `p` with values 1 to 5. This is not so. Remember, the arguments of a function are evaluated when they are first needed. Until then they are promises. The concept of a promise was surprising because it's one of the very few objects which have reference semantics in *base-R*. So a promise is just a pointer to a variable name in an environment (the environment from which the function is called) -- they are not pointing to values! If the value of the variable pointed to changes before the promise is evaluated inside the function, the behaviour of the function will change too. This leads to the question: what is the value of `p` inside this list of functions?
 
 
 {% highlight r %}
