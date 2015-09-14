@@ -1,5 +1,7 @@
 name: notes from seb!
 description: stats / R
+descriptionLong: A blog about statistics, programming and R.
+keywords: R programming statistics
 
 sass:
   sass_dir: assets/css/_sass
@@ -26,4 +28,3 @@ ga_username: wahani
 
 timezone: Europe/Berlin
 
-exclude: [_posts/Ideen, _posts/*.Rmd, build.R, Makefile]

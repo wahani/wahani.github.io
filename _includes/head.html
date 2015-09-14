@@ -3,24 +3,25 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ site.name }} {% if page.title %} &mdash; {{ page.title }} {% endif %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="alternate" type="application/atom+xml" title="{{site.name}}" href="{{site.url}}/feed.xml">
-
+        
         <!-- Loop and attach page tags from page meta section -->
         {% if page.tags %}
         <meta name="keywords" content="{{ page.tags | join: ' '}}">
         {% else %}
-        <meta name="keywords" content="">
+        <meta name="keywords" content="{{ site.keywords }}">
         {% endif %}
-
-	<!-- Description of page/post -->
-	{% if page.description %}
+        
+	      <!-- Description of page/post -->
+	      {% if page.description %}
         <meta name="description" content="{{ page.description }}">
         {% else %}
-        <meta name="description" content="">
+        <meta name="description" content="{{ site.descriptionLong }}">
         {% endif %}
-
+        
+        <title>{% if page.title %}{{ page.title }}{% else %}{{ site.name }}{% endif %}</title>
+        
+        <link rel="alternate" type="application/atom+xml" title="{{site.name}}" href="{{site.url}}/feed.xml">
         <link rel="icon" type="image/png" href="{{ "/favicon.png" | prepend: site.url }}">
         <!-- Custom CSS -->
         <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.url }}">

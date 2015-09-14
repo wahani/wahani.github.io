@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-title: Working with lists as Objects in R
+title: Working with lists as objects in R and aoos
 description: "This post explains how to work with lists as objects in R using the R package aoos. aoos introduces alternative syntax for functions from the built in system in the package methods. Its goal is to promote object oriented programming in the R langauage."
 comments: true
 math: false

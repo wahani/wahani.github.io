@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-title: Introduction to Anaother System for Object Orientation in R
+title: Introduction to aoos - Anaother System for Object Orientation in R
 description: "Introduces the R package aoos. aoos introduces alternative syntax for functions from the built in system in the package methods. Its goal is to promote object oriented programming in the R langauage."
 comments: false
 math: true
