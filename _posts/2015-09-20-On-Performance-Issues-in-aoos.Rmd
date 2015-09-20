@@ -2,11 +2,6 @@
 layout: post
 published: true
 title: On Performance Issues in aoos
-description: "This post explains how to work with lists as objects in
-[R](https://cran.r-project.org/) using the R package
-[aoos](https://cran.r-project.org/package=aoos). aoos provides alternative
-syntax for functions from the built in system for object orientation in the
-package *methods*."
 comments: true
 math: false
 tags: [R, oop, aoos]
