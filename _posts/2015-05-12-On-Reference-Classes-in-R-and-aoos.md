@@ -758,7 +758,7 @@ rational + rational
 
 
 {% highlight text %}
-## Error in get(pair[2], envir = as.environment(e1)): object '.+' not found
+## 4/3
 {% endhighlight %}
 
 
@@ -770,7 +770,7 @@ rational - rational
 
 
 {% highlight text %}
-## Error in get(pair[2], envir = as.environment(e1)): object '.-' not found
+## 0/1
 {% endhighlight %}
 
 Returning a list can be superior because it comes with an easy and straight
