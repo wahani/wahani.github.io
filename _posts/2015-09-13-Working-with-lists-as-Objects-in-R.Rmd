@@ -13,6 +13,12 @@ tags: [R, oop, aoos]
 archive: false
 ---
 
+This post is part of a series related to object oriented programming
+in [R](https://cran.r-project.org/) and the package
+[aoos](https://cran.r-project.org/package=aoos). The [previous]({% post_url 2015-09-13-Introducing-Another-Object-Orientation-System-3 %}) introduces the
+current version of aoos. The [next]({% post_url 2015-09-20-On-Performance-Issues-in-aoos %}) links to the
+*Performance* vignette in the package.
+
 This post explains how to work with lists as objects in
 [R](https://cran.r-project.org/) using the R package
 [aoos](https://cran.r-project.org/package=aoos). aoos provides alternative

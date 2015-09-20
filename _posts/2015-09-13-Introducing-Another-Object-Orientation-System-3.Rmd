@@ -9,6 +9,10 @@ tags: [R, oop, aoos]
 archive: false
 ---
 
+This post is part of a series related to object oriented programming
+in [R](https://cran.r-project.org/) and the package
+[aoos](https://cran.r-project.org/package=aoos). The [previous]({% post_url 2015-05-12-On-Reference-Classes-in-R-and-aoos %}) was a discussion of different representations of reference classes in R. The [next]({% post_url 2015-09-13-Working-with-lists-as-Objects-in-R %}) links to another vignette in the package and introduces some features of `retList`.
+
 This post introduces the [R](https://cran.r-project.org/) package [aoos](https://cran.r-project.org/package=aoos). aoos provides alternative syntax for functions from the built in system for object orientation in the package *methods*. Its goal is to promote object oriented programming in the R language.
 
 The following is a vignette (as iframe) also contained in the package itself. You can find it if you copy the following into R:

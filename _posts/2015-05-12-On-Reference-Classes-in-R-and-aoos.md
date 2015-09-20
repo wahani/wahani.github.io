@@ -5,6 +5,12 @@ tags: [R, oop, aoos]
 archive: false
 ---
 
+This post is part of a series related to object oriented programming
+in [R](https://cran.r-project.org/) and the package
+[aoos](https://cran.r-project.org/package=aoos). The [previous]({% post_url 2015-05-08-Introducing-Another-Object-Orientation-System-2 %}) introduced the
+version 0.2.0 of aoos. The [next]({% post_url 2015-09-13-Introducing-Another-Object-Orientation-System-3 %}) links to the
+*Introduction* vignette in the package.
+
 To educate myself I am attending a coursera course named *Functional Programming
 Principles in Scala*. For the past 2 years I regularly return to the course to
 learn something new. However, I never really tried to solve things in Scala but
@@ -202,6 +208,12 @@ Rational <- defineRefClass({
 })
 {% endhighlight %}
 
+
+
+{% highlight text %}
+## Error in eval(expr, envir, enclos): could not find function "defineRefClass"
+{% endhighlight %}
+
 `defineRefClass` is a wrapper around `setRefClass` and captures whatever you
 write inside the curly braces. So this is really just a different representation
 of the above example but at least for me easier to read. The test cases for
@@ -301,7 +313,17 @@ Rational <- defineRefClass({
   }
 
 })
+{% endhighlight %}
 
+
+
+{% highlight text %}
+## Error in eval(expr, envir, enclos): could not find function "defineRefClass"
+{% endhighlight %}
+
+
+
+{% highlight r %}
 rational <- Rational(2, 3)
 rational$.gcd
 {% endhighlight %}
@@ -309,7 +331,7 @@ rational$.gcd
 
 
 {% highlight text %}
-## Error in rational$.gcd: Restricted access!
+## Error in envRefInferField(x, what, getClass(class(x)), selfEnv): '.gcd' is not a valid field or method name for reference class "Rational"
 {% endhighlight %}
 
 
@@ -752,13 +774,24 @@ Rational <- function(numer, denom) {
 }
 
 rational <- Rational(2, 3)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in Rational(2, 3): could not find function "retList"
+{% endhighlight %}
+
+
+
+{% highlight r %}
 rational + rational
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## 4/3
+## Error in Rational(numer = numer * that$denom + that$numer * denom, denom = denom * : could not find function "retList"
 {% endhighlight %}
 
 
@@ -770,7 +803,7 @@ rational - rational
 
 
 {% highlight text %}
-## 0/1
+## Error in Rational(numer = -numer, denom = denom): could not find function "retList"
 {% endhighlight %}
 
 Returning a list can be superior because it comes with an easy and straight
@@ -800,7 +833,7 @@ Employee(1, "Chef")
 
 
 {% highlight text %}
-## Hi, my name is Chef and my employee id is 1
+## Error in Person(...): could not find function "retList"
 {% endhighlight %}
 
 The End!

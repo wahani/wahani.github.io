@@ -4,9 +4,15 @@ title: Introducing Another Object Orientation System
 description: "Introduction to the R-package aoos, another object orientation system in R - v0.2.0."
 comments: false
 math: true
-tags: [R, oop, aoos, object orientation]
+tags: [R, oop, aoos]
 archive: true
 ---
+
+This is the second of a series of posts related to object oriented programming
+in [R](https://cran.r-project.org/) and the package
+[aoos](https://cran.r-project.org/package=aoos). The [previous]({% post_url 2015-01-02-Introducing-Another-Object-Orientation-System %}) introduced the
+first version of aoos; this introduces version 0.2.0. the [next]({% post_url 2015-05-12-On-Reference-Classes-in-R-and-aoos %}) is on different
+representations of reference classes in R.
 
 R has more than enough systems for object orientation and here is yet another one. *S3* and *S4* are the built in systems. [R.oo](http://cran.r-project.org/web/packages/R.oo/index.html) has been developed since 2001; [proto](http://cran.r-project.org/web/packages/proto/index.html) since 2005; and [R6](http://cran.r-project.org/web/packages/R6/index.html) is the newest and published to CRAN in 2014.
 
@@ -15,6 +21,14 @@ What I wanted to have is a system where method definitions are part of the class
 As an example for this post consider the class *Directory*. `defineClass` is used to define a new class. If you want a field or method to be private, i.e. not easily accessible from the client, you can use the function ` private`. The *class definition* is a R-expression; every assignment in that expression will define a field or method.
 
 
+{% highlight text %}
+## Downloading github repo wahani/aoos@v0.2.0
+## Installing aoos
+## '/usr/lib/R/bin/R' --no-site-file --no-environ --no-save --no-restore  \
+##   CMD INSTALL '/tmp/RtmpfbxnCx/devtools10aed58435/wahani-aoos-25d66d4'  \
+##   --library='/home/sebastian/R/x86_64-pc-linux-gnu-library/3.2'  \
+##   --install-tests
+{% endhighlight %}
 
 
 {% highlight r %}
@@ -89,8 +103,8 @@ foo
 
 {% highlight text %}
 ##                      size               mtime
-## foo/someData.txt      292 2015-09-13 19:01:03
-## foo/someMoreData.txt  292 2015-09-13 19:01:03
+## foo/someData.txt      292 2015-09-20 11:20:19
+## foo/someMoreData.txt  292 2015-09-20 11:20:19
 {% endhighlight %}
 
 
@@ -117,7 +131,7 @@ foo
 
 {% highlight text %}
 ##                  size               mtime
-## foo/someData.txt  292 2015-09-13 19:01:03
+## foo/someData.txt  292 2015-09-20 11:20:19
 {% endhighlight %}
 
 
@@ -140,4 +154,4 @@ foo
 ## [1] TRUE
 {% endhighlight %}
 
-If you are still interested you can install the package from [Github](https://github.com/wahani/aoos) or [CRAN](http://cran.r-project.org/web/packages/aoos/index.html).
+If you are still interested you can install the package from [Github](https://github.com/wahani/aoos) or [CRAN](https://cran.r-project.org/package=aoos).
