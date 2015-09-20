@@ -1,17 +1,17 @@
 ---
 layout: post
 published: true
-title: Introduction to aoos - Anaother System for Object Orientation in R
-description: "Introduces the R package aoos. aoos introduces alternative syntax for functions from the built in system in the package methods. Its goal is to promote object oriented programming in the R langauage."
+title: Introduction to aoos - Another System for Object Orientation in R
+description: "This post introduces the [R](https://cran.r-project.org/) package [aoos](https://cran.r-project.org/package=aoos). aoos provides alternative syntax for functions from the built in system for object orientation in the package *methods*. Its goal is to promote object oriented programming in the R language."
 comments: false
 math: true
-tags: [R, oop, aoos, object orientation, methods]
+tags: [R, oop, aoos]
 archive: false
 ---
 
-Introduces the [R](https://cran.r-project.org/) package [aoos](https://cran.r-project.org/package=aoos). aoos introduces alternative syntax for functions from the built in system in the package methods. Its goal is to promote object oriented programming in the R langauage.
+This post introduces the [R](https://cran.r-project.org/) package [aoos](https://cran.r-project.org/package=aoos). aoos provides alternative syntax for functions from the built in system for object orientation in the package *methods*. Its goal is to promote object oriented programming in the R language.
 
-The following is the vignette (as iframe) also contained in the package itself. You can find it if you copy the following into R:
+The following is a vignette (as iframe) also contained in the package itself. You can find it if you copy the following into R:
 
 ```{r eval = FALSE}
 install.packages("aoos")
