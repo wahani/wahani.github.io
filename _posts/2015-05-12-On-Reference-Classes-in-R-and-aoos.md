@@ -208,12 +208,6 @@ Rational <- defineRefClass({
 })
 {% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): could not find function "defineRefClass"
-{% endhighlight %}
-
 `defineRefClass` is a wrapper around `setRefClass` and captures whatever you
 write inside the curly braces. So this is really just a different representation
 of the above example but at least for me easier to read. The test cases for
@@ -313,17 +307,7 @@ Rational <- defineRefClass({
   }
 
 })
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): could not find function "defineRefClass"
-{% endhighlight %}
-
-
-
-{% highlight r %}
 rational <- Rational(2, 3)
 rational$.gcd
 {% endhighlight %}
@@ -331,7 +315,7 @@ rational$.gcd
 
 
 {% highlight text %}
-## Error in envRefInferField(x, what, getClass(class(x)), selfEnv): '.gcd' is not a valid field or method name for reference class "Rational"
+## Error in rational$.gcd: Restricted access!
 {% endhighlight %}
 
 
@@ -774,24 +758,13 @@ Rational <- function(numer, denom) {
 }
 
 rational <- Rational(2, 3)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in Rational(2, 3): could not find function "retList"
-{% endhighlight %}
-
-
-
-{% highlight r %}
 rational + rational
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in Rational(numer = numer * that$denom + that$numer * denom, denom = denom * : could not find function "retList"
+## 4/3
 {% endhighlight %}
 
 
@@ -803,7 +776,7 @@ rational - rational
 
 
 {% highlight text %}
-## Error in Rational(numer = -numer, denom = denom): could not find function "retList"
+## 0/1
 {% endhighlight %}
 
 Returning a list can be superior because it comes with an easy and straight
@@ -833,7 +806,7 @@ Employee(1, "Chef")
 
 
 {% highlight text %}
-## Error in Person(...): could not find function "retList"
+## Hi, my name is Chef and my employee id is 1
 {% endhighlight %}
 
 The End!
