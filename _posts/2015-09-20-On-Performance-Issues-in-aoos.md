@@ -24,4 +24,4 @@ vignette("performance", "aoos")
 
 Main findings: As the description in aoos already suggests, don't use `defineClass`, it is not only experimental but also the slowest alternative. `retList` is faster than R6 because it is doing even less.
 
-<iframe width='100%' height='2000' src="http://wahani.github.io/aoos/vignettes/performance.html" frameborder="0" allowfullscreen></iframe>
+<iframe width='100%' height='2000' src="https://wahani.github.io/aoos/vignettes/performance.html" frameborder="0" allowfullscreen></iframe>

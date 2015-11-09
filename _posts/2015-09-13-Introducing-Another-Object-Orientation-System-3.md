@@ -21,4 +21,4 @@ install.packages("aoos")
 vignette("Introduction", "aoos")
 {% endhighlight %}
 
-<iframe width='100%' height='950' src="http://wahani.github.io/aoos/vignettes/Introduction.html" frameborder="0" allowfullscreen></iframe>
+<iframe width='100%' height='950' src="https://wahani.github.io/aoos/vignettes/Introduction.html" frameborder="0" allowfullscreen></iframe>
