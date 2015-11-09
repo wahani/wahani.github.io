@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/PanosSakkos/personal-jekyll-theme.svg?branch=master)
+[![Build Status](https://travis-ci.org/wahani/wahani.github.io.svg)](https://travis-ci.org/wahani/wahani.github.io)
 
 # { Personal } Jekyll Theme
 
