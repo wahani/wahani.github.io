@@ -1,7 +1,7 @@
 
 # Site settings
 
-url: "http://127.0.0.1:4000"
+url: wahani.github.io # "http://127.0.0.1:4000"
 permalink: /:year/:month/:title/
 
 highlighter: pygments
