@@ -28,6 +28,10 @@ code {
     border-radius: 4px;
 }
 
+pre code {
+  white-space: pre;
+}
+
 .highlight .hll { background-color: #ffc; }
 .highlight .gd { color: #2e3436; background-color: #0e1416; }
 .highlight .gr { color: #eeeeec; background-color: #c00; }
