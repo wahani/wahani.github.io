@@ -1,19 +1,17 @@
 ---
 layout: post
-published: true
-comments: true
+section-type: post
 title: Functional programming with lambda.r
-description: "Exploring the R-package lambda.r and a functional programming style for data manipulation."
+category: [R, programming]
 tags: [R, fp, lambda.r]
-archive: true
 ---
 
 My first post was on [S4-methods](/Introducing-S4-Methods/) and how I could add new features to a function without changing it -- using function dispatch in S4. This works out fine, but is not optimal for me.
 
-- The function `setMethod` introduces code which is dificult to read
+- The function `setMethod` introduces code which is difficult to read
 - The dispatch uses classes not attributes or different conditions for dispatch
 - I am not trained to use object orientation as a programming style (I am not at all trained as a programmer) and after using it in a project I think if I want to get started with object orientation maybe I should not use a functional language to begin with
-- I would never use S4 outside package delelopment
+- I would never use S4 outside package development
 - And S4 is not playing nice with roxygen2, it took me hours to adjust my workflow
 
 So I wanted to get back to the functional programming techniques available in R. Here [lambda.r](http://cran.r-project.org/web/packages/lambda.r/index.html) seems to be a nice addition to what R already offers. Especially the capability of dispatching functions. So here is an example.

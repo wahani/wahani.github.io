@@ -1,12 +1,9 @@
 ---
 layout: post
+section-type: post
 title: "A not so simple bar plot example using ggplot2"
-author: "Sebastian"
-tags: [R, ggplot2, datendesign]
-description: "A barplot example using ggplot2 from the book 'Datendesign mit R'."
-bibliography:
-output: wahaniMiscs:::pdf_memo
-archive: false
+category: graphics
+tags: [R, ggplot2]
 ---
 
 ```{r echo=FALSE}

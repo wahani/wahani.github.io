@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "grid layouts"
-author: "Sebastian"
+section-type: post
+title: "Customized layout with grid"
+category: graphics
 tags: [R, grid]
-bibliography:
-output: wahaniMiscs:::pdf_memo
-archive: true
 ---
 
 # How to layout element on a viewport
+
+This is a short snippet for customized layouts of a graphic using grid.
 
 
 {% highlight r %}
@@ -29,4 +29,4 @@ grid.rect(gp = gpar(col = "grey"), vp = main)
 grid.rect(gp = gpar(col = "grey"), vp = footnote)
 {% endhighlight %}
 
-<img src="/assets/images/2015-02-11-grid-layouts/unnamed-chunk-1-1.png" title="center" alt="center" width="100%" />
+<img src="/img/2015-02-11-grid-layouts/unnamed-chunk-1-1.png" title="center" alt="center" width="100%" />

@@ -1,8 +1,9 @@
 ---
 layout: post
+section-type: post
 title: "On Reference Classes in R and aoos"
-tags: [R, oop, aoos]
-archive: false
+category: programming
+tags: [R, oop]
 ---
 
 This post is part of a series related to object oriented programming
@@ -108,9 +109,7 @@ constructed is used to define the arguments to `setRefClass` and then the result
 looks as follows:
 
 ```{r}
-# devtools::install_github("wahani/aoos", ref = "146ba25b48fb6fda69a622e40784595bb4786819")
 library("aoos")
-
 Rational <- defineRefClass({
   Class <- "Rational"
 

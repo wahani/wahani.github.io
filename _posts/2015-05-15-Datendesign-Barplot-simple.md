@@ -1,12 +1,9 @@
 ---
 layout: post
+section-type: post
 title: "A not so simple bar plot example using ggplot2"
-author: "Sebastian"
-tags: [R, ggplot2, datendesign]
-description: "A barplot example using ggplot2 from the book 'Datendesign mit R'."
-bibliography:
-output: wahaniMiscs:::pdf_memo
-archive: false
+category: graphics
+tags: [R, ggplot2]
 ---
 
 
@@ -94,7 +91,7 @@ ggBar
 ## Warning: Removed 14 rows containing missing values (position_stack).
 {% endhighlight %}
 
-<img src="/assets/images/2015-05-15-Datendesign-Barplot-simple/unnamed-chunk-5-1.png" title="center" alt="center" width="100%" />
+<img src="/img/2015-05-15-Datendesign-Barplot-simple/unnamed-chunk-5-1.png" title="center" alt="center" width="100%" />
 
 ## Annotations and layout
 
@@ -124,7 +121,7 @@ grid.rect(gp = gpar(col = "grey"), vp = annotation1)
 grid.rect(gp = gpar(col = "grey"), vp = annotation2)
 {% endhighlight %}
 
-<img src="/assets/images/2015-05-15-Datendesign-Barplot-simple/unnamed-chunk-6-1.png" title="center" alt="center" width="100%" />
+<img src="/img/2015-05-15-Datendesign-Barplot-simple/unnamed-chunk-6-1.png" title="center" alt="center" width="100%" />
 
 And now we can add the final annotations to the plot:
 
@@ -171,7 +168,7 @@ grid.text("Durchschnitt: 45",
           x = 0.95, y = 0.55, vp = annotation2)
 {% endhighlight %}
 
-<img src="/assets/images/2015-05-15-Datendesign-Barplot-simple/unnamed-chunk-7-1.png" title="center" alt="center" width="100%" />
+<img src="/img/2015-05-15-Datendesign-Barplot-simple/unnamed-chunk-7-1.png" title="center" alt="center" width="100%" />
 
 {% highlight r %}
 # dev.off()

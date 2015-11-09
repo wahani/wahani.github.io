@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "grid layouts"
-author: "Sebastian"
+section-type: post
+title: "Customized layout with grid"
+category: graphics
 tags: [R, grid]
-bibliography:
-output: wahaniMiscs:::pdf_memo
-archive: true
 ---
 
 # How to layout element on a viewport
+
+This is a short snippet for customized layouts of a graphic using grid.
 
 ```{r}
 library(grid)

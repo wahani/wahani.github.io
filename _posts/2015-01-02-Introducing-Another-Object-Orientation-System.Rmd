@@ -1,12 +1,10 @@
 ---
 layout: post
-published: true
+section-type: post
 title: Introducing Another Object Orientation System
-description: "Introduction to the R-package aoos, another object orientation system in R - v0.1.0."
-comments: true
 math: true
-tags: [R, oop, aoos]
-archive: true
+tags: [R, oop]
+category: programming
 ---
 
 This is the first of a series of posts related to object oriented programming in [R](https://cran.r-project.org/) and the package [aoos](https://cran.r-project.org/package=aoos).

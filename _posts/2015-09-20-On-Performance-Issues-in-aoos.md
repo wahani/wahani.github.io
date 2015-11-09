@@ -1,11 +1,10 @@
 ---
 layout: post
-published: true
+section-type: post
 title: On Performance Issues in aoos
 comments: true
-math: false
-tags: [R, oop, aoos]
-archive: false
+category: programming
+tags: [R, oop]
 ---
 
 This post is part of a series related to object oriented programming

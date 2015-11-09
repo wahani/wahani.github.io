@@ -5,7 +5,7 @@ input <- args[1]
 output <- args[2]
 
 opts_chunk$set(tidy = FALSE)
-figPath <- paste0("assets/images/", sub(".Rmd$", "", basename(input)), "/")
+figPath <- paste0("img/", sub(".Rmd$", "", basename(input)), "/")
 opts_chunk$set(fig.path = figPath)
 opts_knit$set(base.url="/")
 opts_chunk$set(fig.cap = "center")

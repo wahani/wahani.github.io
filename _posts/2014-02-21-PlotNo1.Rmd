@@ -1,19 +1,14 @@
 ---
 layout: post
+section-type: post
 title: Plot No 1 - smoothScatter
-description: "A plot made with R. I am using ggplot2 to reproduce something similar to graphics::smoothScatter."
-comments: true
+category: graphics
 tags: [R, ggplot2]
-archive: true
 ---
-
-```{r}
-opts_chunk$set(dev = 'png')
-```
 
 Why do I write this post?
 -------------------------
-The motivation for this plot is the function: `graphics::smoothScatter`. A friend of mine uses the `graphics` package extensively and I am more a `ggplot2` user. So I wondered if I could imitate the main features of the plot.
+The motivation for this plot is the function: `graphics::smoothScatter`. So I wondered if I could imitate the main features of the plot with [ggplot2](http://ggplot2.org/).
 
 Reproducing the plot:
 ---------------------

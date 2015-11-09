@@ -1,12 +1,10 @@
 ---
 layout: post
-published: true
+section-type: post
 title: Promises and Closures in R
-description: "An explanation/exploration of functions returning functions (closures) in combination with the concept of lazy evaluation and promises in R."
-comments: true
 math: true
-tags: [R, fp, closures, lazy evaluation, functional programming]
-archive: false
+category: programming
+tags: [R, fp]
 ---
 
 At the moment I try to improve my knowledge about functional programming in R. Luckily there are some explanations on the topic in the web ([adv-r](http://adv-r.had.co.nz/Functional-programming.html) and [Cartesian Faith](http://cartesianfaith.com/2014/04/16/modeling-data-with-functional-programming-in-r-chapter-1/)). Beginning to (re)discover the usefulness of closures, I remember some (at first sight) very strange behaviour. Actually it is consistent within the scoping rules of [*R*](http://cran.r-project.org/), but until I felt to be on the same level of consistency it took a while.
@@ -28,7 +26,7 @@ g(1, nonExistentObject)
 Have a look at the figure 'Environment Path 1' ([this is the inspiration](http://cran.r-project.org/doc/contrib/Fox-Companion/appendix-scope.pdf)). Your workspace is also called the Global Environment and you can access it explicitly using the internal variable `.GlobalEnv`. There is one variable in my workspace, the function `g(x, y)`. When `g` is called a new environment is created in which it's body will be evaluated. This is denoted by the solid line. In this new environment of `g` there exist two variables, `x` and `y`. As long as those variables are not needed, no values are bound to those names only a promise that a value can be found at the time of evaluation. Since `x` is evaluated, the value `1` is bound to `x` in the environment of the function `g`. `y`, however, is not evaluated, so the promised value of `y` is never searched for and we can promise anything.
 
 <figure style = "text-align: center">
-  <a href=""><img src="/assets/images/2014-05-18-A-Closure-and-a-Promise/EnvPath1.png"></a>
+  <a href=""><img src="/img/2014-05-18-A-Closure-and-a-Promise/EnvPath1.png"></a>
 	<figcaption><a title="Environment Path 1"> Environment Path 1</a>.</figcaption>
 </figure>
 
@@ -50,7 +48,7 @@ cbind(f1(1:10), f2(1:10))
 Here I created `fClosure` as a function of `p` which will return a function of `x`. Then I assign values to `f1` and `f2` which are the functions \\( f(x) = x^1 \\) and \\( f(x) = x^2 \\). The reason this works can be answered by looking at the figure 'Environment Path 2' with all environments and connections between them.
 
 <figure style = "text-align: center">
-  <a href=""><img src="/assets/images/2014-05-18-A-Closure-and-a-Promise/EnvPath2.png"></a>
+  <a href=""><img src="/img/2014-05-18-A-Closure-and-a-Promise/EnvPath2.png"></a>
   <figcaption><a title="Environment Path 2"> Environment Path 2</a>.</figcaption>
 </figure>
 

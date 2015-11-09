@@ -1,10 +1,9 @@
 ---
 layout: post
+section-type: post
 title: "Teaching R"
-author: "Sebastian"
-tags: [resources]
-bibliography:
-output: wahaniMiscs:::pdf_memo
+category: resources
+tags: [R, teaching]
 ---
 
 # Resources for teaching with R

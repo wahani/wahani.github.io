@@ -1,11 +1,8 @@
-name: notes from seb!
-description: stats / R
-descriptionLong: A blog about statistics, programming and R.
-keywords: R programming statistics
 
-sass:
-  sass_dir: assets/css/_sass
-  style: :compressed
+# Site settings
+
+url: "http://127.0.0.1:4000"
+permalink: /:year/:month/:title/
 
 highlighter: pygments
 markdown: kramdown
@@ -14,18 +11,129 @@ kramdown:
   footnote_nr: 1
   entity_output: as_char
 
-url: http://wahani.github.io # http://127.0.0.1:4000
-permalink: /:year/:month/:title/
-owner:
-    name: Sebastian Warnholz
-    twitter: swarnholz
-    github: wahani
-    disqus_shortname: wahanigithubio
-    linkedin: http://de.linkedin.com/pub/sebastian-warnholz/62/11b/370
+google-tracking-id: UA-48337246-1
 
-ga_id: UA-48337246-1
-ga_username: wahani
+# Forces https everywhere in your website, except when you serve it locally
 
-timezone: Europe/Berlin
+force-https: True
 
-exclude: [_posts/Ideen, _posts/*.Rmd, build.R, Makefile, data/*]
+#############
+# HTML Head #
+#############
+
+author: "Sebastian Warnholz"
+lang: "en"
+title: "notes from seb!"
+favicon: "/img/favicon.ico"
+description: "A blog about statistics, programming and R."
+keywords: "warnholz, sebastian, blog, stats, R"
+
+################
+# Intro layout #
+################
+
+black-favicon: "/img/black-lab-glass.ico"
+background-img: "../img/scatter.png"
+me-img: "/img/me.png"
+
+##############################
+# Dynamic Text on the header #
+##############################
+
+dynamic-typing: True
+shuffle: False	# Shuffle the lines.
+loop: True
+loop-count:	False # Set False for infinite loop, or set any number for finite loop.
+type-speed:	10		# Default 10
+start-delay: 200	# Default 200
+delete-delay: 5000	# Default 5000
+lines:			# You can add HTML Tags in the Text
+  - text: "A: What is the p-value anyway?"
+  - text: "B: A simple answer to a question you are not interested in."
+  - text: "A: Thats's not helpful!"
+  - text: "B: Okay, it's the probability of your data; Given the Null."
+  - text: "A: Given the Null?!"
+  - text: "B: Well, it's the probability to observe the effect you do, when in truth there is no effect."
+  - text: "A: So it's the probability that there is no effect."
+  - text: "B: No, either there is an effect or not."
+  - text: "A: Anyway, it's significant, so I am good right?"
+  - text: "B: If you say so."
+
+########
+# Blog #
+########
+
+post-preview-words: 96
+
+paginate: 20
+
+fb-share: False
+twitter-share: True
+reddit-share: False
+disqus-shortname: "wahanigithubio"
+
+###############
+# Life Events #
+###############
+
+events:
+  - image: "/img/career/spidertocat.png"
+    date: ""
+    description: "Saving the neighborhood!"
+  - image: "/img/career/baracktocat.jpg"
+    date: ""
+    description: "Started coding"
+
+# First image of the Career timeline
+career-img: "/img/career/default.png"
+
+##################
+# Contact layout #
+##################
+
+email: "wahani@gmail.com"
+message: "Send me an e-mail"
+
+##################
+# Social Buttons #
+##################
+
+social:
+  - title: "twitter"
+    url: "https://twitter.com/swarnholz"
+  - title: "github"
+    url: "https://github.com/wahani"
+  - title: "rss"
+    url: "/feed.xml"
+
+############
+# 404 page #
+############
+
+404-img: "/img/labtocat.png"
+
+################################################################################
+
+# Tread carefully if you want to change the variables below this point!
+
+# Navigation bar links
+# Blog link in the blog and post pages will point to the blog.html#blog
+# In the default page it will point to the preview of the last post
+
+pages_list:
+  About: 'about'
+  Blog: 'blog'
+  Career: 'career'
+  Contact: 'contact'
+
+# Pagination path
+paginate_path: "blog/page:num"
+
+# Enable minification SASS
+sass:
+  style: compressed
+
+# Exclusion list from the generated _site
+exclude: ["Rakefile", "LICENSE", "readme.markdown", "vendor", "_posts/Ideen", "_posts/*.Rmd"]
+
+gems: [jekyll-paginate]

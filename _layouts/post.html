@@ -1,36 +1,52 @@
----
-layout: default
----
-<div class="col-sm-12">
-    <div class="page">
-    	<div class="page-title">
-    		{{ page.title }}
-    		<div class="meta">
-                {% if site.owner.name %}
-                By {{site.owner.name}},
-                {% endif %}
-    			<time class="timeago" datetime="{{ page.date }}">{{ page.date |  date: "%A %-d %B %Y" }}</time>,
-    			<a href="{{ page.url | prepend: site.url }}#disqus_thread">0 <i class="fa fa-comments-o fa-lg"></i></a>
-    			comments.
-    		</div>
-    	</div>
-        <div class="page-content">
-            <!-- Disclaimer -->
-            {% if page.archive != false %}
-              <p><i>This article is archived because of a reason. The content can be outdated or in draft form. You are welcome to read it anyway.</i></p>
-            {% endif %}
 
-            {{ content }}
-            <!-- Share & Comments -->
-            {% include scripts/share.html %}
+<!-- Post Layout Start -->
+
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+
+  {% include head.html %}
+  {% include math.html %}
+
+  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    {% include navigation.html %}
+
+    <section id="{{ page.title }}" class="container content-section">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+
+          <h1><strong>{{ page.title }}</strong></h1>
+          <h4><strong>{{ page.date | date_to_string }}</strong>
+            <small> . {{ page.category }} . <a href="{{site.baseurl}}{{page.url }}#disqus_thread">Comments</a>
+            {% for tag in page.tags %}
+              <a href="{{site.baseurl}}/tags/{{tag}}.html">#{{ tag }}</a>
+            {% endfor %}
+            </small>
+          </h4>
+
+          {{ content }}
+
+          {% include share.html %}
+
+          {% include comments.html %}
+
         </div>
-    </div>
-</div>
-<script>
-    $(".page-preview-icon").hover(function(){
-        $(this).parents(".page-nav").css("z-index","5000");
-    });
-    {% include scripts/disqus.html %}
-</script>
+      </div>
+    </section>
 
-{% include scripts/math.html %}
+    <section id="{{ page.title }}" class="container content-section text-center">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          {% include social-buttons.html %}
+        </div>
+      </div>
+    </section>
+
+    {% include footer.html %}
+
+    {% include js.html %}
+
+  </body>
+</html>
+
+<!-- Post Layout End -->
