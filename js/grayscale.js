@@ -18,7 +18,7 @@ $(function() {
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
+            scrollTop: $($anchor.attr('href')).offset().top - $(window).height() / 2 + 50 // terrible hack with fixed pixel size. 
         }, 1500, 'easeInOutExpo'
         , function(){ $anchor.blur(); });
         event.preventDefault();
