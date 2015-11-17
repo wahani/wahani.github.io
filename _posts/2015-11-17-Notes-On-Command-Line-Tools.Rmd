@@ -1,0 +1,41 @@
+---
+layout: post
+section-type: post
+title: Notes On Command Line Tools
+comments: true
+category: notes
+tags: [shell]
+---
+
+In this post I keep some notes on usefull tools on the command line.
+
+## Monitoring folders:
+
+### For new files
+
+```{R engine='bash', eval=FALSE}
+inotifywait ~/data --recursive --monitor --event create
+```
+
+## Git
+
+### remove all history
+
+```{R engine='bash', eval=FALSE}
+rm -rf .git
+```
+
+### init git
+    
+```{R engine='bash', eval=FALSE}
+git init
+git add .
+git commit -m "Initial commit"
+```
+
+### push to GitHub
+
+```{R engine='bash', eval=FALSE}
+git remote add origin <github-uri>
+git push -u --force origin master
+```
