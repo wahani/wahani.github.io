@@ -1,21 +1,15 @@
 ---
-layout: default
+layout: page
 title: Archive
 ---
-<div class="col-sm-12">
-    <div class="page-title">
-        {{ page.title }}
-    </div>
-    <div class="page-content">
-        <ul class="page-list">
-            {% for post in site.posts %}
-                {% if post.archive != false %}
-                <li>
-                  <time class="timeago" datetime="{{ post.date }}" itemprop="datePublished">{{ post.date | date: "%A %-d %B %Y" }}</time>
-                    &mdash; <a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
-                </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
-</div>
+
+<ul class="page-list">
+  {% for post in site.posts %}
+  {% if post.archive != false %}
+  <li>
+    <time class="timeago" datetime="{{ post.date }}" itemprop="datePublished">{{ post.date | date: "%A %-d %B %Y" }}</time>
+    &mdash; <a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>

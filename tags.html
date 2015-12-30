@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Tags
 ---
 <!-- Thanks to [LanyonM](https://github.com/LanyonM/lanyonm.github.io/blob/master/tags.html)
@@ -11,38 +11,34 @@ for the tutorial on leaders w/ js -->
 {% endcapture %}
 <!-- num_words -->
 {% assign tag_words = site_tags | split:',' | sort %}
+
 <!-- tag_words -->
-<div class="col-sm-12">
-    <div class="page-title">
-        {{ page.title }}
-    </div>
-    <div class="page-content">
-        <ul class="leaders">
-            {% for item in (0..num_words) %}{% unless forloop.last %}
-            {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
-            <li>
-                <span class="leaders-left">{{ site.tags[this_word].size }}</span>
-                <a class="leaders-right dropdown-tags" data-for="#tag-pages{{item}}">
-                    <strong>
-                        {{ this_word }}
-                    </strong>
-                    <i class="fa fa-chevron-down"></i>
-                </a>
-            </li>
-            <ul class="page-list tags">
-                {% for post in site.tags[this_word] %}{% if post.title != null %}
-                <li class="tag-pages" id="tag-pages{{item}}">
-                    <span class="entry-date leaders-left">
-                        <time class="timeago" datetime="{{ post.date }}" itemprop="datePublished">{{ post.date | date: "%A %-d %B %Y" }}</time>
-                    </span>
-                    <a class="leaders-right" href="{{ post.url }}">{{ post.title }}</a>
-                </li>
-                {% endif %}{% endfor %}
-            </ul>
-            {% endunless %}{% endfor %}
-        </ul>
-    </div>
-</div>
+
+<ul class="leaders">
+  {% for item in (0..num_words) %}{% unless forloop.last %}
+  {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
+  <li>
+    <span class="leaders-left">{{ site.tags[this_word].size }}</span>
+    <a class="leaders-right dropdown-tags" data-for="#tag-pages{{item}}">
+      <strong>
+        {{ this_word }}
+      </strong>
+      <i class="fa fa-chevron-down"></i>
+    </a>
+  </li>
+  <ul class="page-list tags">
+    {% for post in site.tags[this_word] %}{% if post.title != null %}
+    <li class="tag-pages" id="tag-pages{{item}}">
+      <span class="entry-date leaders-left">
+        <time class="timeago" datetime="{{ post.date }}" itemprop="datePublished">{{ post.date | date: "%A %-d %B %Y" }}</time>
+      </span>
+      <a class="leaders-right" href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+    {% endif %}{% endfor %}
+  </ul>
+  {% endunless %}{% endfor %}
+</ul>
+
 <script>
-    {% include scripts/tags.html %}
+{% include scripts/tags.html %}
 </script>

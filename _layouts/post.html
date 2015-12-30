@@ -1,31 +1,32 @@
 ---
 layout: default
 ---
-<div class="col-sm-12">
-    <div class="page">
-      <h1 class="page-title">{{ page.title }}</h1>
-    	<div class="page-title">
-    		<div class="meta">
-                {% if site.owner.name %}
-                By <a href="{{ '/contact.html' | prepend: site.url }}">{{site.owner.name}}</a>,
-                {% endif %}
-    			<time class="timeago" datetime="{{ page.date }}">{{ page.date |  date: "%A %-d %B %Y" }}</time>
-    			<a href="{{ page.url | prepend: site.url }}#disqus_thread">0 <i class="fa fa-comments-o fa-lg"></i></a>
-    			comments.
-    		</div>
-    	</div>
-        <div class="page-content">
-            <!-- Disclaimer -->
-            {% if page.archive != false %}
-              <p><i>This article is archived because of a reason. The content can be outdated or in draft form. You are welcome to read it anyway.</i></p>
-            {% endif %}
 
-            {{ content }}
-            <!-- Share & Comments -->
-            {% include scripts/share.html %}
-        </div>
-    </div>
+<!-- adds to title -->
+<h1 class="page-title">{{ page.title }}</h1>
+<span class="page-title meta">
+  {% if site.owner.name %}
+    By <a href="{{ '/about.html' | prepend: site.url }}">{{site.owner.name}}</a>,
+  {% endif %}
+	<time class="timeago" datetime="{{ page.date }}">{{ page.date |  date: "%A %-d %B %Y" }}</time>
+	<a href="{{ page.url | prepend: site.url }}#disqus_thread">0 <i class="fa fa-comments-o fa-lg"></i></a>
+	comments.
+</span>
+
+<!-- Content -->
+<div class="page-content">
+  <!-- Disclaimer -->
+  {% if page.archive != false %}
+    <p><i>This article is archived because of a reason. The content can be outdated or in draft form. You are welcome to read it anyway.</i></p>
+  {% endif %}
+
+  {{ content }}
+
+  <!-- Share & Comments -->
+  {% include scripts/share.html %}
 </div>
+
+<!-- Additional scripts for posts -->
 <script>
     $(".page-preview-icon").hover(function(){
         $(this).parents(".page-nav").css("z-index","5000");
