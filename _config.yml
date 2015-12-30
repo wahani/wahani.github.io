@@ -14,7 +14,7 @@ kramdown:
   footnote_nr: 1
   entity_output: as_char
 
-url: wahani.github.io # http://127.0.0.1:4000
+url: https://wahani.github.io # http://127.0.0.1:4000
 permalink: /:year/:month/:title/
 owner:
     name: Sebastian Warnholz
