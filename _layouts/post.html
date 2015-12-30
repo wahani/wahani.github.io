@@ -6,7 +6,7 @@ layout: default
 <h1 class="page-title">{{ page.title }}</h1>
 <span class="page-title meta">
   {% if site.owner.name %}
-    By <a href="{{ '/about.html' | prepend: site.url }}">{{site.owner.name}}</a>,
+    By <a class="link" href="{{ '/about.html' | prepend: site.url }}">{{site.owner.name}}</a>,
   {% endif %}
 	<time class="timeago" datetime="{{ page.date }}">{{ page.date |  date: "%A %-d %B %Y" }}</time>
 	<a href="{{ page.url | prepend: site.url }}#disqus_thread">0 <i class="fa fa-comments-o fa-lg"></i></a>

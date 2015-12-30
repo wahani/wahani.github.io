@@ -3,3 +3,4 @@ _site
 nbproject
 .sass-cache
 .Rproj.user/*
+.Rproj.user
