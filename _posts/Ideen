@@ -30,6 +30,7 @@ Style-Guide:
     - Description
     - Table of Contents
   - Functions: Quik description, arguments
+  - The use of free variables
 
 Functional Programming:
   - Ersetzen von for-Schleifen
@@ -53,9 +54,12 @@ Interessante Pakete:
   - cran-packages github.com/hadley
   - relaimpo
   - hier.part
+  - Cowplot
+  - Rdsm
 
 Education:
   - statsTeachR
+  - swirl
 
 Pattern:
   - See: http://www.infoq.com/presentations/Clojure-Design-Patterns
@@ -68,3 +72,10 @@ Pattern:
       - Functions that throw exceptions
       - Supervisory functions
   - Designing for errors
+  - Explicit vectorization
+  doSomething <- function(x) {
+    iter <- function(x) ...
+    lapply(x, iter)
+  }
+  - If-else vs. methods
+  if (is.numeric(x)) ... # Maybe this is a type

@@ -19,3 +19,6 @@ $lnk-highlight-color: #333;
 pre code {
   white-space: pre;
 }
+pre {
+  word-wrap: inherit;
+}
