@@ -1,6 +1,6 @@
 # Usually, only these lines need changing
 MDDIR= ./_posts
-RMDDIR= ./_posts
+RMDDIR= ./_drafts
 
 # list R-markdown files
 RMD_FILES:= $(wildcard $(RMDDIR)/*.Rmd)

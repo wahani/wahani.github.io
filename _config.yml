@@ -28,4 +28,3 @@ ga_username: wahani
 
 timezone: Europe/Berlin
 
-exclude: [_posts/Ideen, _posts/*.Rmd, build.R, Makefile, data/*]
