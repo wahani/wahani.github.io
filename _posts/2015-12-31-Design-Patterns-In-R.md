@@ -224,8 +224,7 @@ R-package has access to the packages namespace or a method in a class as in
 object orientation has access to the scope of the class. But typically the term 
 is used when functions are returned from other functions (except *R*s error 
 message whenever you try to *subset a closure*). If you don't know about them, 
-but want to, you can read [this article]({% post_url
-2014-09-23-Promises-and-Closures-in-R %}) or the chapter in [Advanced
+but want to, you can read [this article]({% post_url 2014-09-23-Promises-and-Closures-in-R %}) or the chapter in [Advanced
 R](http://adv-r.had.co.nz/Functional-programming.html#closures).
 
 For my example I use a closure to redefine the fixed point function for the

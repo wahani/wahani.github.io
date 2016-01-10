@@ -64,7 +64,10 @@ Education:
 
 Pattern:
   - See: http://www.infoq.com/presentations/Clojure-Design-Patterns
-  - wrapper pattern (+)
+  - Wrapper pattern (+)
+  - Cache pattern (+)
+  - Mutability pattern (+)
+  - Interface pattern (+)
   - pipeline pattern
   - split-apply-combine
   - Railway Oriented Programming
@@ -80,4 +83,4 @@ Pattern:
   }
   - If-else vs. methods
   if (is.numeric(x)) ... # Maybe this is a type
-  - Cache pattern (+)
+
