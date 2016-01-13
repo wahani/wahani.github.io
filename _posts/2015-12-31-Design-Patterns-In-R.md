@@ -2,10 +2,10 @@
 layout: post
 title: Design Patterns in R
 description: ""
-comments: false
+comments: true
 math: true
 tags: [r, fp]
-archive: true
+archive: false
 ---
 
 These notes are inspired by 
