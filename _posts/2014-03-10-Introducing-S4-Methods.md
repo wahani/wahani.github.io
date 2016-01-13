@@ -1,7 +1,7 @@
 ---
 layout: post
-comments: true
-title: Introducing S4-Generics
+comments: false
+title: Introducing S4-Methods
 description: "A short introduction to generic functions using the S4 class system in R."
 tags: [R, oop, S4, S3]
 archive: false
@@ -33,13 +33,13 @@ summary(dat)
 
 
 {% highlight text %}
-##        x                 y           
-##  Min.   :-0.6280   Min.   :-1.34245  
-##  1st Qu.:-0.2145   1st Qu.:-0.70997  
-##  Median : 0.2441   Median : 0.08289  
-##  Mean   : 0.3218   Mean   :-0.08853  
-##  3rd Qu.: 0.8239   3rd Qu.: 0.44352  
-##  Max.   : 1.6075   Max.   : 1.00751
+##        x                 y          
+##  Min.   :-1.7458   Min.   :-1.6306  
+##  1st Qu.:-0.8405   1st Qu.:-0.4204  
+##  Median :-0.4316   Median :-0.2509  
+##  Mean   :-0.2688   Mean   : 0.3870  
+##  3rd Qu.: 0.5028   3rd Qu.: 0.8392  
+##  Max.   : 1.2282   Max.   : 4.3288
 {% endhighlight %}
 
 
@@ -57,16 +57,16 @@ summary(lm(y ~ x, dat))
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -1.2309 -0.5597  0.1516  0.3633  1.1250 
+## -1.9708 -0.9175 -0.3570  0.7501  3.6568 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)
-## (Intercept)  -0.0064     0.2854  -0.022    0.983
-## x            -0.2552     0.3750  -0.680    0.515
+## (Intercept)   0.4899     0.5572   0.879    0.405
+## x             0.3828     0.5736   0.667    0.523
 ## 
-## Residual standard error: 0.818 on 8 degrees of freedom
-## Multiple R-squared:  0.05471,	Adjusted R-squared:  -0.06345 
-## F-statistic: 0.463 on 1 and 8 DF,  p-value: 0.5154
+## Residual standard error: 1.693 on 8 degrees of freedom
+## Multiple R-squared:  0.05272,	Adjusted R-squared:  -0.06569 
+## F-statistic: 0.4452 on 1 and 8 DF,  p-value: 0.5234
 {% endhighlight %}
 
 ## Methods

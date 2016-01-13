@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: true
+comments: false
 title: Introducing S4-Methods
 description: "A short introduction to generic functions using the S4 class system in R."
 tags: [R, oop, S4, S3]
