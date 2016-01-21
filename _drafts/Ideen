@@ -48,7 +48,7 @@ Functional Programming:
   - Atomic vs. primitive
   - Class vs. type
   - Procedural language
-
+  - User-defined data types in r
 
 Interessante Pakete:
   - cran-packages github.com/hadley

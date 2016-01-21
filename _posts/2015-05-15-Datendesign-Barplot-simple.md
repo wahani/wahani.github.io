@@ -2,10 +2,8 @@
 layout: post
 title: "A not so simple bar plot example using ggplot2"
 author: "Sebastian"
-tags: [R, ggplot2, datendesign]
+categories: [R, graphics]
 description: "A barplot example using ggplot2 from the book 'Datendesign mit R'."
-bibliography:
-output: wahaniMiscs:::pdf_memo
 archive: false
 ---
 
@@ -40,12 +38,67 @@ Here are some steps to modify the data such that it can be easily used with ggpl
 
 {% highlight r %}
 ipsos <- openxlsx::read.xlsx("../data/alle_daten/ipsos.xlsx") # this most likely needs adjustment
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in loadNamespace(name): there is no package called 'openxlsx'
+{% endhighlight %}
+
+
+
+{% highlight r %}
 ipsos <- ipsos[order(ipsos$Wert),]
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in eval(expr, envir, enclos): object 'ipsos' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 ipsos$Land <- ordered(ipsos$Land, ipsos$Land)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in factor(x, ..., ordered = TRUE): object 'ipsos' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 ipsos$textFamily <- ifelse(ipsos$Land %in% c("Deutschland","Brasilien"),
                            "Lato Black", "Lato Light")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in match(x, table, nomatch = 0L): object 'ipsos' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 ipsos$labels <- paste0(ipsos$Land, ifelse(ipsos$Wert < 10, "     ", "  "),
                        ipsos$Wert)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in paste0(ipsos$Land, ifelse(ipsos$Wert < 10, "     ", "  "), ipsos$Wert): object 'ipsos' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 rect <- data.frame(
   ymin = seq(0, 80, 20),
   ymax = seq(20, 100, 20),
@@ -84,17 +137,25 @@ ggBar <- ggplot(ipsos) +
         axis.text.y = element_text(
           family = ipsos$textFamily),
         text = element_text(family = "Lato Light"))
+{% endhighlight %}
 
+
+
+{% highlight text %}
+## Error in ggplot(ipsos): object 'ipsos' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 ggBar
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Warning: Removed 14 rows containing missing values (position_stack).
+## Error in eval(expr, envir, enclos): object 'ggBar' not found
 {% endhighlight %}
-
-<img src="/assets/images/2015-05-15-Datendesign-Barplot-simple/unnamed-chunk-5-1.png" title="center" alt="center" width="100%" />
 
 ## Annotations and layout
 
@@ -140,7 +201,7 @@ print(ggBar, vp = main)
 
 
 {% highlight text %}
-## Warning: Removed 14 rows containing missing values (position_stack).
+## Error in print(ggBar, vp = main): object 'ggBar' not found
 {% endhighlight %}
 
 

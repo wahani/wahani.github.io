@@ -2,9 +2,7 @@
 layout: post
 title: "The Matrix package"
 author: "Sebastian"
-bibliography:
-output: wahaniMiscs:::pdf_memo
-tags: [R, Matrix]
+categories: [R]
 ---
 
 # Some considerations on perfomance:
@@ -20,24 +18,18 @@ vignette("Comparisons", package = "Matrix")
 
 {% highlight r %}
 library("Matrix")
+data(KNex, package = "Matrix")
 {% endhighlight %}
 
 
 
 {% highlight text %}
 ## Loading required package: methods
-## 
-## Attaching package: 'Matrix'
-## 
-## The following objects are masked from 'package:base':
-## 
-##     crossprod, tcrossprod
 {% endhighlight %}
 
 
 
 {% highlight r %}
-data(KNex, package = "Matrix")
 y <- KNex$y
 mm <- as(KNex$mm, "matrix")
 system.time(naive.sol <- solve(t(mm) %*% mm) %*% t(mm) %*% y)
@@ -47,7 +39,7 @@ system.time(naive.sol <- solve(t(mm) %*% mm) %*% t(mm) %*% y)
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.757   0.370   0.354
+##   0.821   0.000   0.821
 {% endhighlight %}
 
 
@@ -60,7 +52,7 @@ system.time(cpod.sol <- solve(crossprod(mm), crossprod(mm,y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.158   0.042   0.050
+##   0.550   0.000   0.551
 {% endhighlight %}
 
 
@@ -73,7 +65,7 @@ system.time(t(mm) %*% mm)
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.221   0.071   0.075
+##   0.018   0.004   0.023
 {% endhighlight %}
 
 ## Using Matrix
@@ -89,7 +81,7 @@ system.time(Mat.sol <- solve(crossprod(mm), crossprod(mm, y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.162   0.027   0.050
+##   0.597   0.000   0.598
 {% endhighlight %}
 
 There is also a concept of memoization implemented as allustrated as:
@@ -105,7 +97,7 @@ system.time(solve(xpx, xpy))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.023   0.014   0.010
+##   0.067   0.000   0.067
 {% endhighlight %}
 
 
@@ -118,7 +110,7 @@ system.time(solve(xpx, xpy))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.003   0.002   0.001
+##   0.001   0.000   0.002
 {% endhighlight %}
 
 I don't know where the results are stored exactly. The document says with the original object, so either as attribute to `xpx` or `xpy`.
@@ -157,7 +149,7 @@ system.time(solve(crossprod(mm), crossprod(mm, y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.123   0.064   0.050
+##   0.577   0.000   0.577
 {% endhighlight %}
 
 
@@ -200,7 +192,7 @@ system.time(solve(xpx, crossprod(mm, y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.031   0.021   0.014
+##   0.069   0.000   0.068
 {% endhighlight %}
 
 
@@ -213,7 +205,7 @@ system.time(solve(xpx, crossprod(mm, y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.007   0.010   0.004
+##   0.003   0.000   0.002
 {% endhighlight %}
 
 It's kind of the *manual* memoization of results you don't want to recompute.
@@ -245,7 +237,7 @@ system.time(sparse.sol <- solve(crossprod(mm), crossprod(mm, y)))
 
 {% highlight text %}
 ##    user  system elapsed 
-##   0.004   0.000   0.003
+##   0.004   0.000   0.004
 {% endhighlight %}
 
 The methods seem to be polimorphic, so the return value can have different classes. `Matrix` for example will try to determine the class on it's own:

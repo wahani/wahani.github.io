@@ -2,9 +2,7 @@
 layout: post
 title: "'Functional Programming with Scala' with R"
 author: "Sebastian"
-tags: [R, fp, oop, aoos]
-bibliography:
-output: wahaniMiscs:::pdf_memo
+categories: [R, fp]
 math: true
 archive: true
 ---
@@ -90,9 +88,8 @@ Why is this `mapReduce` different from the `Reduce` function in R? Hm, in `mapRe
 # Functions and Data
 
 ```{r}
-devtools::install_github("wahani/aoos")
 library(aoos)
-Rational <- Class({
+Rational <- defineRefClass({
   Class <- "Rational"
   contains <- "Private"
 

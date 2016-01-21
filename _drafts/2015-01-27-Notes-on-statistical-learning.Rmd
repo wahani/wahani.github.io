@@ -2,7 +2,7 @@
 layout: post
 title: "2015-01-27 Notes Statistical learning"
 author: "Sebastian"
-tags: quote
+categories: notes
 bibliography:
 output: wahaniMiscs:::pdf_memo
 archive: true

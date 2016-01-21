@@ -2,9 +2,7 @@
 layout: post
 title: "DatendesignR config"
 author: "Sebastian"
-tags: datendesign
-bibliography:
-output: wahaniMiscs:::pdf_memo
+categories: notes
 archive: true
 ---
 

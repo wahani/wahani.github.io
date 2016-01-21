@@ -12,15 +12,10 @@ R and programming.
 - [Another System for Object Orientation in R](https://cran.r-project.org/package=aoos)
 - [Modules in R](https://cran.r-project.org/package=modules)
 - [Simulation Tools for Small Area Estimation](https://cran.r-project.org/package=saeSim)
+- [Tools for Data Manipulation](https://github.com/wahani/dat)
 
 # Contact Information
 
 - [GitHub](https://github.com/{{ site.owner.github }})
 - [LinkedIn]({{ site.owner.linkedin }})
-
-## Sebastian Warnholz
-
 - <wahani@gmail.com>
-- Pannierstr. 1
-- D-12043 Berlin
-- Tel: +49 30 233 293 82

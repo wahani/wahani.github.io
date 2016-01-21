@@ -5,7 +5,7 @@ title: Introducing Another Object Orientation System
 description: "Introduction to the R-package aoos, another object orientation system in R - v0.1.0."
 comments: true
 math: true
-tags: [R, oop, aoos]
+categories: [R, oop, aoos]
 archive: true
 ---
 
@@ -26,12 +26,27 @@ devtools::install_github("wahani/aoos", ref = "v0.1.0")
 
 
 {% highlight text %}
-## Downloading github repo wahani/aoos@v0.1.0
+## Downloading GitHub repo wahani/aoos@v0.1.0
+{% endhighlight %}
+
+
+
+{% highlight text %}
 ## Installing aoos
+{% endhighlight %}
+
+
+
+{% highlight text %}
 ## '/usr/lib/R/bin/R' --no-site-file --no-environ --no-save --no-restore  \
-##   CMD INSTALL '/tmp/Rtmph8OhqA/devtools5b531c263a93/wahani-aoos-94010bd'  \
-##   --library='/home/sebastian/R/x86_64-pc-linux-gnu-library/3.2'  \
-##   --install-tests
+##   CMD INSTALL '/tmp/Rtmp2vnvEu/devtools53b465ae21a9/wahani-aoos-94010bd'  \
+##   --library='/usr/local/lib/R/site-library' --install-tests
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
 {% endhighlight %}
 
 
@@ -115,8 +130,8 @@ foo
 
 {% highlight text %}
 ##                      size               mtime
-## foo/someData.txt      292 2015-09-20 10:42:44
-## foo/someMoreData.txt  292 2015-09-20 10:42:44
+## foo/someData.txt      292 2016-01-21 16:00:01
+## foo/someMoreData.txt  292 2016-01-21 16:00:01
 {% endhighlight %}
 
 
@@ -143,7 +158,7 @@ foo
 
 {% highlight text %}
 ##                  size               mtime
-## foo/someData.txt  292 2015-09-20 10:42:44
+## foo/someData.txt  292 2016-01-21 16:00:01
 {% endhighlight %}
 
 

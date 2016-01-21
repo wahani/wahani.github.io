@@ -2,7 +2,7 @@
 layout: post
 title: Notes On Google Trend Data
 author: Sebastian Warnholz
-tags: [R]
+categories: [R, notes]
 ---
   
   

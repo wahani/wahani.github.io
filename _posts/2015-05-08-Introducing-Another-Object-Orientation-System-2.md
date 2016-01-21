@@ -4,7 +4,7 @@ title: Introducing Another Object Orientation System
 description: "Introduction to the R-package aoos, another object orientation system in R - v0.2.0."
 comments: false
 math: true
-tags: [R, oop, aoos]
+categories: [R, oop, aoos]
 archive: true
 ---
 
@@ -22,12 +22,27 @@ As an example for this post consider the class *Directory*. `defineClass` is use
 
 
 {% highlight text %}
-## Downloading github repo wahani/aoos@v0.2.0
+## Downloading GitHub repo wahani/aoos@v0.2.0
+{% endhighlight %}
+
+
+
+{% highlight text %}
 ## Installing aoos
+{% endhighlight %}
+
+
+
+{% highlight text %}
 ## '/usr/lib/R/bin/R' --no-site-file --no-environ --no-save --no-restore  \
-##   CMD INSTALL '/tmp/RtmpfbxnCx/devtools10aed58435/wahani-aoos-25d66d4'  \
-##   --library='/home/sebastian/R/x86_64-pc-linux-gnu-library/3.2'  \
-##   --install-tests
+##   CMD INSTALL '/tmp/RtmpqT9OpB/devtools55174eeaa43/wahani-aoos-25d66d4'  \
+##   --library='/usr/local/lib/R/site-library' --install-tests
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
 {% endhighlight %}
 
 
@@ -103,8 +118,8 @@ foo
 
 {% highlight text %}
 ##                      size               mtime
-## foo/someData.txt      292 2015-09-20 11:20:19
-## foo/someMoreData.txt  292 2015-09-20 11:20:19
+## foo/someData.txt      292 2016-01-21 16:00:24
+## foo/someMoreData.txt  292 2016-01-21 16:00:24
 {% endhighlight %}
 
 
@@ -131,7 +146,7 @@ foo
 
 {% highlight text %}
 ##                  size               mtime
-## foo/someData.txt  292 2015-09-20 11:20:19
+## foo/someData.txt  292 2016-01-21 16:00:24
 {% endhighlight %}
 
 

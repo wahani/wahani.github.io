@@ -4,7 +4,7 @@ published: true
 comments: true
 title: Functional programming with lambda.r
 description: "Exploring the R-package lambda.r and a functional programming style for data manipulation."
-tags: [R, fp, lambda.r]
+categories: [R, fp]
 archive: true
 ---
 

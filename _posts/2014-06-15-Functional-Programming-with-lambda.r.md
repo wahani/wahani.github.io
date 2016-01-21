@@ -4,7 +4,7 @@ published: true
 comments: true
 title: Functional programming with lambda.r
 description: "Exploring the R-package lambda.r and a functional programming style for data manipulation."
-tags: [R, fp, lambda.r]
+categories: [R, fp]
 archive: true
 ---
 
@@ -38,17 +38,17 @@ applyFun(dat, "x", mean, "group")
 
 
 {% highlight text %}
-##              x group
-## 1.1  0.6389466     1
-## 1.2  0.6389466     1
-## 1.3  0.6389466     1
-## 1.4  0.6389466     1
-## 1.5  0.6389466     1
-## 2.6  4.1182737     2
-## 2.7  4.1182737     2
-## 2.8  4.1182737     2
-## 2.9  4.1182737     2
-## 2.10 4.1182737     2
+##             x group
+## 1.1  2.758458     1
+## 1.2  2.758458     1
+## 1.3  2.758458     1
+## 1.4  2.758458     1
+## 1.5  2.758458     1
+## 2.6  3.124531     2
+## 2.7  3.124531     2
+## 2.8  3.124531     2
+## 2.9  3.124531     2
+## 2.10 3.124531     2
 {% endhighlight %}
 
 The function `applyFun` will apply `fun` on a subset denoted by `group` and the variable `var`. This may be usefull if you do transformations on single variables which are different in each group, or you do not want your data collapsed, i.e. preserve the original number of rows. `group` for example can be a chracter with `length > 1`, I can plug in any function wich will return a scalar or a vector with the length of the input. However, it will only work on a single variable in the data, so `var` schould have length 1. I could try something with `[` instead of `[[` for subsetting but then the requirements for `fun` will change and I do want to preserve the behaviour of `applyFun`.
@@ -66,17 +66,6 @@ I don't like the first choice, I have a running collection of functions and they
 
 {% highlight r %}
 library(lambda.r)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in library(lambda.r): there is no package called 'lambda.r'
-{% endhighlight %}
-
-
-
-{% highlight r %}
 rm(applyFun)
 
 # Version of lambda.r if length(var) == 1
@@ -88,17 +77,7 @@ applyFun(dat, var, fun, by, ...) %when% {
     df
   }) %>% do.call(what=rbind)
 }
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): konnte Funktion "%as%" nicht finden
-{% endhighlight %}
-
-
-
-{% highlight r %}
 # Version of lambda.r if length(var) != 1
 applyFun(dat, var, fun, by, ...) %as% {
   for (varName in var) {
@@ -106,24 +85,24 @@ applyFun(dat, var, fun, by, ...) %as% {
   }
   dat
 }
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): konnte Funktion "%as%" nicht finden
-{% endhighlight %}
-
-
-
-{% highlight r %}
 applyFun(dat, "x", mean, "group")
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): konnte Funktion "applyFun" nicht finden
+##             x group
+## 1.1  2.758458     1
+## 1.2  2.758458     1
+## 1.3  2.758458     1
+## 1.4  2.758458     1
+## 1.5  2.758458     1
+## 2.6  3.124531     2
+## 2.7  3.124531     2
+## 2.8  3.124531     2
+## 2.9  3.124531     2
+## 2.10 3.124531     2
 {% endhighlight %}
 
 
@@ -136,7 +115,17 @@ applyFun(dat, c("x", "y"), mean, "group")
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): konnte Funktion "applyFun" nicht finden
+##               x group          y
+## 1.1.1  2.758458     1 0.09487884
+## 1.1.2  2.758458     1 0.09487884
+## 1.1.3  2.758458     1 0.09487884
+## 1.1.4  2.758458     1 0.09487884
+## 1.1.5  2.758458     1 0.09487884
+## 2.2.6  3.124531     2 0.79230370
+## 2.2.7  3.124531     2 0.79230370
+## 2.2.8  3.124531     2 0.79230370
+## 2.2.9  3.124531     2 0.79230370
+## 2.2.10 3.124531     2 0.79230370
 {% endhighlight %}
 
 With `%when%` I introduce a condition, or multiple conditions, which needs to evaluate to `TRUE`. If it does the function body introduced by `%as%` is evaluated exactly like before. So I am generating a couple of more lines, but I can reuse the function body of the original `applyFun` definition. The second definition of `applyFun` is what will be called if `length(var) != 1`. So something like the else statement in a if-else clause. Like in a if-else control structure the order is important. So either I control access using a second `%when%` or the definition needs to be after the '`length(var) == 1`' version, which I did here.

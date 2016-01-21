@@ -2,9 +2,7 @@
 layout: post
 title: "The Matrix package"
 author: "Sebastian"
-bibliography:
-output: wahaniMiscs:::pdf_memo
-tags: [R, Matrix]
+categories: [R]
 ---
 
 # Some considerations on perfomance:

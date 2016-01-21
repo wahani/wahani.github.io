@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "On Reference Classes in R and aoos"
-tags: [R, oop, aoos]
+categories: [R, oop, aoos]
 archive: false
 ---
 

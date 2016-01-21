@@ -2,9 +2,7 @@
 layout: post
 title: "Post processing graphics"
 author: "Sebastian"
-tags: [grapics, design, scribus]
-bibliography:
-output: wahaniMiscs:::pdf_memo
+categories: [notes]
 archive: true
 ---
 

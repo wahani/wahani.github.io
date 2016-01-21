@@ -3,7 +3,7 @@ layout: post
 comments: false
 title: Introducing S4-Methods
 description: "A short introduction to generic functions using the S4 class system in R."
-tags: [R, oop, S4, S3]
+categories: [R, object-orientation]
 archive: false
 ---
 
@@ -34,12 +34,12 @@ summary(dat)
 
 {% highlight text %}
 ##        x                 y          
-##  Min.   :-1.7458   Min.   :-1.6306  
-##  1st Qu.:-0.8405   1st Qu.:-0.4204  
-##  Median :-0.4316   Median :-0.2509  
-##  Mean   :-0.2688   Mean   : 0.3870  
-##  3rd Qu.: 0.5028   3rd Qu.: 0.8392  
-##  Max.   : 1.2282   Max.   : 4.3288
+##  Min.   :-2.1660   Min.   :-0.7494  
+##  1st Qu.:-0.5122   1st Qu.:-0.6013  
+##  Median : 0.2856   Median : 0.1317  
+##  Mean   : 0.2411   Mean   : 0.2327  
+##  3rd Qu.: 1.1523   3rd Qu.: 0.5588  
+##  Max.   : 1.9670   Max.   : 2.5452
 {% endhighlight %}
 
 
@@ -56,17 +56,19 @@ summary(lm(y ~ x, dat))
 ## lm(formula = y ~ x, data = dat)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -1.9708 -0.9175 -0.3570  0.7501  3.6568 
+##      Min       1Q   Median       3Q      Max 
+## -1.40863 -0.36954  0.06322  0.48593  0.96867 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(>|t|)
-## (Intercept)   0.4899     0.5572   0.879    0.405
-## x             0.3828     0.5736   0.667    0.523
+##             Estimate Std. Error t value Pr(>|t|)  
+## (Intercept)   0.3673     0.2463   1.491   0.1742  
+## x            -0.5583     0.2032  -2.748   0.0252 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 1.693 on 8 degrees of freedom
-## Multiple R-squared:  0.05272,	Adjusted R-squared:  -0.06569 
-## F-statistic: 0.4452 on 1 and 8 DF,  p-value: 0.5234
+## Residual standard error: 0.7632 on 8 degrees of freedom
+## Multiple R-squared:  0.4855,	Adjusted R-squared:  0.4212 
+## F-statistic:  7.55 on 1 and 8 DF,  p-value: 0.02515
 {% endhighlight %}
 
 ## Methods

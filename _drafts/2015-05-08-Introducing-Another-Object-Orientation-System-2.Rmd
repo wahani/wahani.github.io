@@ -4,7 +4,7 @@ title: Introducing Another Object Orientation System
 description: "Introduction to the R-package aoos, another object orientation system in R - v0.2.0."
 comments: false
 math: true
-tags: [R, oop, aoos]
+categories: [R, oop, aoos]
 archive: true
 ---
 

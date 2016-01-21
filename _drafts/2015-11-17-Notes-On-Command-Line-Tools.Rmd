@@ -2,7 +2,7 @@
 layout: post
 author: Sebastian Warnholz
 title: Notes On Command Line Tools
-tags: [shell]
+categories: [notes]
 ---
 
 In this post I keep some notes on usefull tools on the command line.

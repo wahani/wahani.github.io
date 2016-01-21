@@ -5,7 +5,7 @@ title: Promises and Closures in R
 description: "An explanation/exploration of functions returning functions (closures) in combination with the concept of lazy evaluation and promises in R."
 comments: true
 math: true
-tags: [R, fp, closures, lazy evaluation, functional programming]
+categories: [R, fp]
 archive: false
 ---
 
@@ -96,7 +96,7 @@ f1
 
 {% highlight text %}
 ## function(x) x^p
-## <environment: 0x3830598>
+## <environment: 0x24488e8>
 {% endhighlight %}
 
 This environment can even be accessed, to check what is going on inside.

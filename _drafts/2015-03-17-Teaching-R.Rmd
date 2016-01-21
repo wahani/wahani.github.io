@@ -1,13 +1,11 @@
 ---
 layout: post
-title: "Teaching R"
+title: "Resources for teaching with R"
 author: "Sebastian"
-tags: [resources]
+categories: [R, notes]
 bibliography:
 output: wahaniMiscs:::pdf_memo
 ---
-
-# Resources for teaching with R
 
 - [openintro.org](OpenIntro)
 - [http://statsteachr.org/](statsTeachR)

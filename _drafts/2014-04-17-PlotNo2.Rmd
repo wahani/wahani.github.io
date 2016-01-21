@@ -3,7 +3,7 @@ layout: post
 title: PlotNo2 - Wes Anderson style
 description: "Some graphics in R using Wes Anderson colour palettes."
 comments: true
-tags: [R, ggplot2, Wes Anderson]
+categories: [R, graphics]
 archive: true
 ---
 
@@ -59,7 +59,7 @@ ggplot(dat, aes(x = fac1, y = fac2,
   geom_tile(stat = "bin2d") +
   # colours:
   #scale_fill_brewer(type = "qual", palette = "Set3") +
-  scale_fill_manual(values = (wes.palette(4, "Chevalier"))) +
+  scale_fill_manual(values = wes_palette("Chevalier", 4)) +
   # theme:
   theme_classic() +
   theme(legend.position = "none",
@@ -78,7 +78,6 @@ For the first plot I use a uniformly distributed and a exponentially distributed
 dat <- data.frame(V1 = runif(n, 0, 10), V2 = rexp(n, 0.5))
 dat$fac1 <- cut(dat$V1, breaks = seq(from=0, to=10, length.out=40))
 dat$fac2 <- cut(dat$V2, breaks = seq(from=min(dat$V2), to=max(dat$V2), length.out=100))
-
 ```
 
 ### Some Plot
@@ -90,7 +89,7 @@ ggplot(dat, aes(x = fac2, y = fac1,
   geom_tile(stat = "bin2d") +
   # colours:
   #scale_fill_gradient(low = "#56B1F7", high = "#132B43") +
-  scale_fill_gradientn(colours = wes.palette(4, "Chevalier")[c(2, 4, 1)]) +
+  scale_fill_gradientn(colours = wes_palette("Chevalier", 4)[c(2, 4, 1)]) +
   # theme:
   theme_classic() +
   coord_cartesian(xlim = c(0, 50)) +
@@ -98,11 +97,6 @@ ggplot(dat, aes(x = fac2, y = fac1,
         axis.ticks = element_blank(),
         axis.text = element_blank(),
         text = element_blank(),
-        panel.background = element_rect(fill = wes.palette(4, "Chevalier")[3]),
+        panel.background = element_rect(fill = wes_palette("Chevalier", 4)[3]),
         plot.margin = unit(c(0, 0, -0.57, -1), "cm"))
-```
-
-## Saving the plot for this blog...
-```{r}
-ggsave("../images/plotNo2.jpg", plot = last_plot(), width = 54.19, height = 13.55, dpi = 300, units = "cm")
 ```

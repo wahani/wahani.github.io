@@ -3,13 +3,13 @@ layout: post
 title: Why is plyr so much faster?
 description: "Speed comparisons with plyr and the split-apply-combine idiom."
 comments: true
-tags: [R, plyr, performance]
+categories: [R, performance]
 archive: true
 ---
 
 Speed comparisons with plyr and the split apply combine idiom.
 
-```{r}
+```{r eval=FALSE}
 library(microbenchmark)
 library(profr)
 # library(lineprof)

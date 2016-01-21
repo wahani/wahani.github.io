@@ -5,7 +5,7 @@ title: Promises and Closures in R
 description: "An explanation/exploration of functions returning functions (closures) in combination with the concept of lazy evaluation and promises in R."
 comments: true
 math: true
-tags: [R, fp, closures, lazy evaluation, functional programming]
+categories: [R, fp]
 archive: false
 ---
 

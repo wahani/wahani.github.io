@@ -1,14 +1,10 @@
 ---
 layout: post
-title: "2015-01-26-Notes"
+title: "How to preserve attributes of a data frame"
 author: "Sebastian"
-tags: [R, S4, fp]
-bibliography:
-output: wahaniMiscs:::pdf_memo
+categories: [R, fp]
 archive: true
 ---
-
-# How to preserve attributes of a data.frame
 
 In the following we have two expressions in which the attributes of a data.frame will be lost.
 

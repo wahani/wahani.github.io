@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Design Patterns in R
-description: ""
+description: "A collection of design patterns for R as a functional programming language"
 comments: true
 math: true
-tags: [r, fp]
+categories: [R, fp]
 archive: false
 ---
 

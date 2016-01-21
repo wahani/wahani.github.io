@@ -4,7 +4,7 @@ published: true
 title: On Performance Issues in aoos
 comments: true
 math: false
-tags: [R, oop, aoos]
+categories: [R, oop, aoos]
 archive: false
 ---
 

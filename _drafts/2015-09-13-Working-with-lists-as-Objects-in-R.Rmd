@@ -9,7 +9,7 @@ description: "This post explains how to work with lists as objects in
   package *methods*."
 comments: true
 math: false
-tags: [R, oop, aoos]
+categories: [R, oop, aoos]
 archive: false
 ---
 

@@ -1,14 +1,12 @@
 ---
 layout: post
-title: "grid layouts"
+title: "How to layout elements on a grid viewport"
 author: "Sebastian"
-tags: [R, grid]
-bibliography:
-output: wahaniMiscs:::pdf_memo
+categories: [R, graphics]
 archive: true
 ---
 
-# How to layout element on a viewport
+Some notes on how to layout elements on a grid viewport:
 
 ```{r}
 library(grid)

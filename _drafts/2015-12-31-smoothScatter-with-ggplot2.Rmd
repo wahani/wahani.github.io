@@ -3,7 +3,7 @@ layout: post
 title: smoothScatter with ggplot2
 description: "I am using ggplot2 to reproduce something similar to graphics::smoothScatter."
 comments: true
-tags: [R, ggplot2]
+categories: [R, graphics]
 archive: false
 ---
 

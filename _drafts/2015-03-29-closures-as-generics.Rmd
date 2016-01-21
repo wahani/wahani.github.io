@@ -1,10 +1,8 @@
 ---
 layout: post
-title: "Generic functions and closures"
+title: "Implementation of generic functions using closures"
 author: "Sebastian"
-tags: [R, fp, closures]
-bibliography:
-output: wahaniMiscs:::pdf_memo
+categories: [R, fp]
 archive: true
 ---
 

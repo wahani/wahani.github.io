@@ -3,13 +3,16 @@ layout: post
 title: smoothScatter with ggplot2
 description: "I am using ggplot2 to reproduce something similar to graphics::smoothScatter."
 comments: true
-tags: [R, ggplot2]
+categories: [R, graphics]
 archive: false
 ---
 
 
 
-The motivation for this plot is the function: `graphics::smoothScatter`; Basically a plot of a two dimensional density estimator. In the following I want to reproduce the features with [ggplot2](https://cran.r-project.org/package=ggplot2).
+The motivation for this plot is the function: `graphics::smoothScatter`;
+Basically a plot of a two dimensional density estimator. In the following I want
+to reproduce the features with
+[ggplot2](https://cran.r-project.org/package=ggplot2).
 
 ## smoothScatter
 

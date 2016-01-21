@@ -1,15 +1,15 @@
 ---
 layout: post
-published: false
+published: true
 title: "saeSim: Simulation Tools in Small Area Estimation"
 description: "A short introduction of the R-Package saeSim. Tools for model- and design based simulations in the field of Small Area Estimation."
 comments: true
 math: true
-tags: [R, saeSim, sae]
+categories: [R, saeSim]
 archive: true
 ---
 
-In this post I want to introduce the package [`saeSim`](/saeSim). The package improved my set-up of design-based and model-based simulation scenarios in the context of Small Area Estimation. It introduces components with which the flow of the simulation is framed and supports a unified structure and interface between each step.
+In this post I want to introduce the package `saeSim`. The package improved my set-up of design-based and model-based simulation scenarios in the context of Small Area Estimation. It introduces components with which the flow of the simulation is framed and supports a unified structure and interface between each step.
 
 ## General idea and workflow
 As I was writing my scripts for simulation I typically ended up using loop structures every second line. Every time I wanted to add or change something, I appended new lines to the script which then needed to iterate over my data. Consider a simple task: Predict a population mean and compare the bias of a linear model and sample average. Repeat this 100 times. The task is clear, simulate 100 populations, compute the mean in each population, draw a sample from each population apply the two models on the samples and estimate the population mean.
