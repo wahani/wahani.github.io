@@ -108,7 +108,6 @@ constructed is used to define the arguments to `setRefClass` and then the result
 looks as follows:
 
 ```{r}
-# devtools::install_github("wahani/aoos", ref = "146ba25b48fb6fda69a622e40784595bb4786819")
 library("aoos")
 
 Rational <- defineRefClass({
@@ -421,12 +420,12 @@ Rational <- function(numer, denom) {
   }
 
   ".-" <- function(that) {
-    self + that$neg()
+    .self + that$neg()
   }
 
   # Return everything in this scope:
-  self <- structure(environment(), class = c("Rational", "Print", "Binary"))
-  self
+  .self <- structure(environment(), class = c("Rational", "Print", "Binary"))
+  .self
 
 }
 
@@ -442,7 +441,7 @@ tricky when you defined fields which can change, because by exporting them to a
 list you made a copy of them and things may not work the way you expect them to.
 In that scenario you should define get and set methods, or better, avoid that
 scenario. I have seen solutions where the methods are defined directly inside
-the list constructor which works fine but then I am back where I started above -
+the list constructor which works fine but then I am back where I started above;
 I don't want to define functions inside the list constructor.
 
 ```{r}
@@ -467,13 +466,11 @@ Rational <- function(numer, denom) {
   }
 
   ".-" <- function(that) {
-    self + that$neg()
+    .self + that$neg()
   }
 
   # Return only what should be visible from this scope:
-  self <- retList(c("Binary", "Print"),
-                  c("numer", "denom", ".+", ".-", "neg", "print"))
-  self
+  retList(c("Binary", "Print"), c("numer", "denom", ".+", ".-", "neg", "print"))
 
 }
 

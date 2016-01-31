@@ -170,7 +170,6 @@ looks as follows:
 
 
 {% highlight r %}
-# devtools::install_github("wahani/aoos", ref = "146ba25b48fb6fda69a622e40784595bb4786819")
 library("aoos")
 
 Rational <- defineRefClass({
@@ -206,12 +205,6 @@ Rational <- defineRefClass({
   }
 
 })
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): could not find function "defineRefClass"
 {% endhighlight %}
 
 `defineRefClass` is a wrapper around `setRefClass` and captures whatever you
@@ -313,17 +306,7 @@ Rational <- defineRefClass({
   }
 
 })
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): could not find function "defineRefClass"
-{% endhighlight %}
-
-
-
-{% highlight r %}
 rational <- Rational(2, 3)
 rational$.gcd
 {% endhighlight %}
@@ -331,7 +314,7 @@ rational$.gcd
 
 
 {% highlight text %}
-## Error in envRefInferField(x, what, getClass(class(x)), selfEnv): '.gcd' is not a valid field or method name for reference class "Rational"
+## Error in rational$.gcd: Restricted access!
 {% endhighlight %}
 
 
@@ -699,12 +682,12 @@ Rational <- function(numer, denom) {
   }
 
   ".-" <- function(that) {
-    self + that$neg()
+    .self + that$neg()
   }
 
   # Return everything in this scope:
-  self <- structure(environment(), class = c("Rational", "Print", "Binary"))
-  self
+  .self <- structure(environment(), class = c("Rational", "Print", "Binary"))
+  .self
 
 }
 
@@ -737,7 +720,7 @@ tricky when you defined fields which can change, because by exporting them to a
 list you made a copy of them and things may not work the way you expect them to.
 In that scenario you should define get and set methods, or better, avoid that
 scenario. I have seen solutions where the methods are defined directly inside
-the list constructor which works fine but then I am back where I started above -
+the list constructor which works fine but then I am back where I started above;
 I don't want to define functions inside the list constructor.
 
 
@@ -763,35 +746,22 @@ Rational <- function(numer, denom) {
   }
 
   ".-" <- function(that) {
-    self + that$neg()
+    .self + that$neg()
   }
 
   # Return only what should be visible from this scope:
-  self <- retList(c("Binary", "Print"),
-                  c("numer", "denom", ".+", ".-", "neg", "print"))
-  self
+  retList(c("Binary", "Print"), c("numer", "denom", ".+", ".-", "neg", "print"))
 
 }
 
 rational <- Rational(2, 3)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in Rational(2, 3): could not find function "retList"
-{% endhighlight %}
-
-
-
-{% highlight r %}
 rational + rational
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in Rational(numer = numer * that$denom + that$numer * denom, denom = denom * : could not find function "retList"
+## 4/3
 {% endhighlight %}
 
 
@@ -803,7 +773,7 @@ rational - rational
 
 
 {% highlight text %}
-## Error in Rational(numer = -numer, denom = denom): could not find function "retList"
+## 0/1
 {% endhighlight %}
 
 Returning a list can be superior because it comes with an easy and straight
@@ -833,7 +803,7 @@ Employee(1, "Chef")
 
 
 {% highlight text %}
-## Error in Person(...): could not find function "retList"
+## Hi, my name is Chef and my employee id is 1
 {% endhighlight %}
 
 The End!
