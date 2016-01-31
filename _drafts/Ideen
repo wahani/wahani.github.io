@@ -83,4 +83,4 @@ Pattern:
   }
   - If-else vs. methods
   if (is.numeric(x)) ... # Maybe this is a type
-
+  - The Use of Ellipses
