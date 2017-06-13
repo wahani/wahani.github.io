@@ -12,7 +12,10 @@ archive: false
 # opts_knit$set(root.dir = "..")
 ```
 
-This is a reproduction of the (*simple*) bar plot of chapter 6.1.1 in [*Datendesign mit R*](http://www.datendesign-r.de/) with [ggplot2](http://ggplot2.org/). To download the data you can use the following lines:
+This is a reproduction of the (*simple*) bar plot of chapter 6.1.1 in
+[*Datendesign mit R*](http://www.datendesign-r.de/) with
+[ggplot2](http://ggplot2.org/). To download the data you can use the following
+lines:
 
 ```{r eval=FALSE}
 dir.create("data")
@@ -99,8 +102,8 @@ main <- vp_make(0.05, 0.05, 0.9, 0.8)
 title <- vp_make(0, 0.9, 0.6, 0.1)
 subtitle <- vp_make(0, 0.85, 0.4, 0.05)
 footnote <- vp_make(0.55, 0, 0.4, 0.05)
-annotation1 <- vp_make(0.7, 0.8, 0.225, 0.05)
-annotation2 <- vp_make(0.4, 0.8, 0.13, 0.05)
+annotation1 <- vp_make(0.7, 0.85, 0.225, 0.05)
+annotation2 <- vp_make(0.4, 0.85, 0.13, 0.05)
 
 # To see which space these viewports will use:
 grid.rect(gp = gpar(lty = "dashed"))

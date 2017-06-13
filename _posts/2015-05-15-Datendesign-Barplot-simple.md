@@ -9,7 +9,10 @@ archive: false
 
 
 
-This is a reproduction of the (*simple*) bar plot of chapter 6.1.1 in [*Datendesign mit R*](http://www.datendesign-r.de/) with [ggplot2](http://ggplot2.org/). To download the data you can use the following lines:
+This is a reproduction of the (*simple*) bar plot of chapter 6.1.1 in
+[*Datendesign mit R*](http://www.datendesign-r.de/) with
+[ggplot2](http://ggplot2.org/). To download the data you can use the following
+lines:
 
 
 {% highlight r %}
@@ -38,67 +41,12 @@ Here are some steps to modify the data such that it can be easily used with ggpl
 
 {% highlight r %}
 ipsos <- openxlsx::read.xlsx("../data/alle_daten/ipsos.xlsx") # this most likely needs adjustment
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in loadNamespace(name): there is no package called 'openxlsx'
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ipsos <- ipsos[order(ipsos$Wert),]
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): object 'ipsos' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ipsos$Land <- ordered(ipsos$Land, ipsos$Land)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in factor(x, ..., ordered = TRUE): object 'ipsos' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ipsos$textFamily <- ifelse(ipsos$Land %in% c("Deutschland","Brasilien"),
                            "Lato Black", "Lato Light")
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in match(x, table, nomatch = 0L): object 'ipsos' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ipsos$labels <- paste0(ipsos$Land, ifelse(ipsos$Wert < 10, "     ", "  "),
                        ipsos$Wert)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in paste0(ipsos$Land, ifelse(ipsos$Wert < 10, "     ", "  "), ipsos$Wert): object 'ipsos' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 rect <- data.frame(
   ymin = seq(0, 80, 20),
   ymax = seq(20, 100, 20),
@@ -137,25 +85,17 @@ ggBar <- ggplot(ipsos) +
         axis.text.y = element_text(
           family = ipsos$textFamily),
         text = element_text(family = "Lato Light"))
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in ggplot(ipsos): object 'ipsos' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ggBar
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'ggBar' not found
+## Warning: Removed 14 rows containing missing values (position_stack).
 {% endhighlight %}
+
+<img src="/assets/images/2015-05-15-Datendesign-Barplot-simple/unnamed-chunk-5-1.png" title="center" alt="center" width="100%" />
 
 ## Annotations and layout
 
@@ -172,8 +112,8 @@ main <- vp_make(0.05, 0.05, 0.9, 0.8)
 title <- vp_make(0, 0.9, 0.6, 0.1)
 subtitle <- vp_make(0, 0.85, 0.4, 0.05)
 footnote <- vp_make(0.55, 0, 0.4, 0.05)
-annotation1 <- vp_make(0.7, 0.8, 0.225, 0.05)
-annotation2 <- vp_make(0.4, 0.8, 0.13, 0.05)
+annotation1 <- vp_make(0.7, 0.85, 0.225, 0.05)
+annotation2 <- vp_make(0.4, 0.85, 0.13, 0.05)
 
 # To see which space these viewports will use:
 grid.rect(gp = gpar(lty = "dashed"))
@@ -201,7 +141,7 @@ print(ggBar, vp = main)
 
 
 {% highlight text %}
-## Error in print(ggBar, vp = main): object 'ggBar' not found
+## Warning: Removed 14 rows containing missing values (position_stack).
 {% endhighlight %}
 
 
